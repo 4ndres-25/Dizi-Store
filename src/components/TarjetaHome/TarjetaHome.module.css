@@ -1,0 +1,23 @@
+.tarjetaHome__container{
+    width: 50%;
+    height: 80%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjetaHome__img{
+    height: 100%;
+    width: 100%;
+}
+
+.tarjetaHome__name{
+    display: flex;
+    height: 20%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    color: white;
+}
+
