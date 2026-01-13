@@ -1,5 +1,6 @@
 import BotonSimple from "../../components/BotonSimple/Index"
 import styles from './Home.module.css'
+import TarjetaHome from "../../components/TarjetaHome/Index"
 
 
 const Home = () => {
@@ -15,6 +16,11 @@ const Home = () => {
             <BotonSimple>XL</BotonSimple>
             <BotonSimple>XXL</BotonSimple>
         </div>
+        <TarjetaHome 
+        imagen="https://www.verawangbride.com/media/catalog/product/l/e/lecros_b.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=747&width=560&canvas=560:747"
+        nombreProducto="Vestido verde largo de gala"
+        slug="vestido-verde-de-gala"
+        ></TarjetaHome>
         <div>
             <p>
             ¡Bienvenidos a DIZI STORE! 🌸✨
