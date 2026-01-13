@@ -1,10 +1,12 @@
 import BotonSimple from "../../components/BotonSimple/Index"
 import styles from './Home.module.css'
+import Header from "../../components/Header/Index"
 
 
 const Home = () => {
   return (
     <div className={styles.home__container}>
+        <Header></Header>
         <h1>DIZI STORE</h1>
         <h2>VESTIDOS</h2>
         <div>
