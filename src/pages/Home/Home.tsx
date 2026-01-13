@@ -20,7 +20,7 @@ const Home = () => {
         </div>
         <TarjetaHome 
         imagen="https://www.verawangbride.com/media/catalog/product/l/e/lecros_b.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=747&width=560&canvas=560:747"
-        nombreProducto="Vestido verde largo de gala"
+        nombreProducto="Vestido verde largo de gala para fiesta"
         slug="vestido-verde-de-gala"
         ></TarjetaHome>
         <div>
