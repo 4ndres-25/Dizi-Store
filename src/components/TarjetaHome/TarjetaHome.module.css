@@ -1,13 +1,16 @@
 .tarjetaHome__link{
   text-decoration: none;
   color: inherit; 
+  display: block;
+  width: 100%;
+  
+  
 }
 .tarjetaHome__container{
     width: 50%;
-    height: calc(100dvw - 100px);
+    height: 73dvw;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 .tarjetaHome__img-container{
     height: 90%;
@@ -15,9 +18,15 @@
     position: relative;
 }
 
+.tarjetaHome__link-img{
+    height: 90%;
+    width: 100%;
+}
+
 .tarjetaHome__img{
     height: 100%;
     width: 100%;    
+    object-fit: cover;
 }
 
 .tarjetaHome__like{
@@ -28,15 +37,33 @@
     position: absolute;
     left: 85%;
     top: 90%;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.tarjetaHome__icon{
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+}
+
+.tarjetaHome__p-container{  
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    height: 10%;
+    width: 100%;
+    
 }
 
 .tarjetaHome__name{    
+    flex: 1 1 auto;
+    min-width: 0;
     text-align: center;
     margin: 0;
     padding: 0;   
-    height: 10%;
-    width: 95%;
-    align-items: center;    
+    height: auto;
     color: black;
     white-space: nowrap;
     overflow: hidden;

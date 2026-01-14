@@ -2,9 +2,13 @@ import BotonSimple from "../../components/BotonSimple/Index"
 import styles from './Home.module.css'
 import Header from "../../components/Header/Index"
 import TarjetaHome from "../../components/TarjetaHome/Index"
+import type {Vestido} from "../../types/Vestidos"
+import vestidos from "../../data/vestidos.json";
+
 
 
 const Home = () => {
+  const data: Vestido[] = vestidos;
   return (
     <div className={styles.home__container}>
         <Header></Header>
@@ -18,11 +22,20 @@ const Home = () => {
             <BotonSimple>XL</BotonSimple>
             <BotonSimple>XXL</BotonSimple>
         </div>
-        <TarjetaHome 
-        imagen="https://www.verawangbride.com/media/catalog/product/l/e/lecros_b.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=747&width=560&canvas=560:747"
-        nombreProducto="Vestido verde largo de gala para fiesta"
-        slug="vestido-verde-de-gala"
-        ></TarjetaHome>
+        <div className={styles["home__cards-container"]}>
+          {data.map((producto, key)=>(
+            <>
+            <TarjetaHome 
+            imagen={producto.image} 
+            nombreProducto={producto.name}
+            slug={producto.slug} ></TarjetaHome>
+            </>
+          ))
+          
+          }
+
+
+        </div>
         <div>
             <p>
             ¡Bienvenidos a DIZI STORE! 🌸✨
