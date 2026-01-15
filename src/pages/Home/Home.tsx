@@ -7,6 +7,7 @@ import vestidos from "../../data/vestidos.json";
 
 
 
+
 const Home = () => {
   const data: Vestido[] = vestidos;
   return (
@@ -14,7 +15,7 @@ const Home = () => {
         <Header></Header>
         <h1>DIZI STORE</h1>
         <h2>VESTIDOS</h2>
-        <div>
+        <div className={styles.home__tallas}>
             <BotonSimple>XS</BotonSimple>
             <BotonSimple>S</BotonSimple>
             <BotonSimple>M</BotonSimple>
@@ -25,7 +26,8 @@ const Home = () => {
         <div className={styles["home__cards-container"]}>
           {data.map((producto, key)=>(
             <>
-            <TarjetaHome 
+            <TarjetaHome
+            key={key} 
             imagen={producto.image} 
             nombreProducto={producto.name}
             slug={producto.slug} ></TarjetaHome>
@@ -41,8 +43,7 @@ const Home = () => {
             ¡Bienvenidos a DIZI STORE! 🌸✨
             En nuestra tienda online encontrarás vestidos, tacones, maquillaje y más, pensados para que luzcas increíble en cada ocasión. Nos ubicamos en Cochabamba, Bolivia, y realizamos envíos a todos los departamentos y provincias del país, para que disfrutes de tus compras sin importar dónde estés. Calidad, estilo y comodidad al alcance de un clic.
             </p>
-        </div>
-
+        </div>      
     </div>
   )
 }
