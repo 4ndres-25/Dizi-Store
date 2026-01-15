@@ -5,6 +5,7 @@ import Logo from '../../assets/Images/Captura_Dizi_Logo.jpg'
 import styles from './Header.module.css'
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
+import Menu from "../../components/Menu/Index"
 
 
 type Props = {}
@@ -24,6 +25,8 @@ function Header ({}: Props) {
         <nav className={styles.header__nav}>
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
             <Link to={"/Favortios"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
+            <Menu></Menu>
+
         </nav>
         
     </header>
