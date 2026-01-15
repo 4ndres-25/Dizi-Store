@@ -74,7 +74,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["/images/vestidos/vestido-rosa.jpg"],
+    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2QEBktxEIVnjKGqLqwuXDl2u4drXWCVDoQ&s"],
     "stock": 6,
     "materiales": ["algodón"],
     "slug": "vestido-corto-rosa-pastel"

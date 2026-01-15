@@ -7,16 +7,17 @@ type Props = {
     imagen: string;
     nombreProducto: string;
     slug: string;
+    clase?: string
 }
 
-function TarjetaHome({imagen, nombreProducto, slug}: Props) { 
+function TarjetaHome({imagen, nombreProducto, slug, clase=""}: Props) { 
     const [nombreUpercase, setNombreUpercase] = useState("")
     useEffect(() => {
       setNombreUpercase(nombreProducto.toUpperCase())
     }, [])
     
   return (
-        <div className={styles.tarjetaHome__container}>
+        <div className={styles[clase?clase:"tarjetaHome__container"]}>
           <div className={styles["tarjetaHome__img-container"]}>
             <Link to={`/producto/${slug}`} className={styles["tarjetaHome__link-img"]}>
               <img src={imagen} className={styles.tarjetaHome__img} alt="Vista previa imagen de Vestido" />

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import type {Vestido} from '../../types/Vestidos'
 import vestidos from '../../data/vestidos.json'
 import styles from './ProductoSeleccionado.module.css'
+import TarjetaHome from '../../components/TarjetaHome/Index'
+
 
 
 
@@ -11,7 +13,6 @@ type Props = {}
 function ProductoSeleccionado({}: Props) {
     const { slug } = useParams<{ slug: string }>();
     const [datosProducto, setDatosProducto] = useState<Vestido | null>(null)
-    const [resultado, setresultado] = useState("")
     
     const data: Vestido[] = vestidos
     /* console.log(data[1].image) */
@@ -25,7 +26,7 @@ function ProductoSeleccionado({}: Props) {
             }
         })
       
-    }, [])
+    }, [slug])
     console.log(datosProducto?.image)
   return (
 
@@ -46,18 +47,33 @@ function ProductoSeleccionado({}: Props) {
            
         </div>
         <label htmlFor="">¿Te interesa este producto? Escribenos</label>
-
-
+        <h3 className={styles.productoSeleccionado__h3Descripcion}>Descripción</h3>
+        <div className={styles.productoSeleccionado__descripcion}>
+            {datosProducto?.descripcion}
+        </div>
+        <h3>PRODUCTOS RELACIONADOS</h3>
         <div className={styles.carrusel__container}>
             {
-            data.map((element)=>(
-               <div className={styles.carrusel__containerimg}>
+            data.map((element, key)=>(
+                
+                <div>
                 { element.tags.some(item=> datosProducto?.tags.includes(item))?(
 
                 
                 ((element.id!==datosProducto?.id)?
-                    (
-                        <img className={styles.carrusel__img} src={element?.image[0]} alt="" />
+                        (
+                    <><div className={styles.carrusel__containerimg}>
+                        <TarjetaHome 
+                        imagen={element.image[0]} 
+                        nombreProducto={element.name} 
+                        slug={element.slug}
+                        key={key}
+                        clase='tarjetaHome__container--carrusel'></TarjetaHome>
+                        </div>
+                         
+                        
+                
+                        </>
                         
                     )
                     :(null))
