@@ -18,13 +18,13 @@ function TarjetaHome({imagen, nombreProducto, slug}: Props) {
   return (
         <div className={styles.tarjetaHome__container}>
           <div className={styles["tarjetaHome__img-container"]}>
-            <Link to={`/${slug}`} className={styles["tarjetaHome__link-img"]}>
+            <Link to={`/producto/${slug}`} className={styles["tarjetaHome__link-img"]}>
               <img src={imagen} className={styles.tarjetaHome__img} alt="Vista previa imagen de Vestido" />
             </Link>
               <button className={styles.tarjetaHome__like}><FaRegHeart className={styles.tarjetaHome__icon}/></button>
           </div>
           <div className={styles["tarjetaHome__p-container"]}>
-            <Link to={`/${slug}`} className={styles.tarjetaHome__link}>
+            <Link to={`/producto/${slug}`} className={styles.tarjetaHome__link}>
                 <p className={styles.tarjetaHome__name}>{nombreUpercase} </p>
             </Link>
           </div>
