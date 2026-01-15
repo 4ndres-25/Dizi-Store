@@ -14,7 +14,7 @@
     "price": 280,
     "currency": "BOB",
     "tags": ["gala", "graduacion", "elegante", "noche", "fiesta"],
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ba3-9NnIKnQEWQASER0rqN3P07Q-qnUHxg&s",
+    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ba3-9NnIKnQEWQASER0rqN3P07Q-qnUHxg&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyNHUK6R1LOHcs9PwX-XE6XQxC64ffqgAvxA&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s"],
     "stock": 5,
     "materiales": ["lentejuelas", "corset"],
     "slug": "vestido-largo-elegante-rojo"
@@ -34,7 +34,7 @@
     "price": 230,
     "currency": "BOB",
     "tags": ["fiesta", "noche", "cocktail"],
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s",
+    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ba3-9NnIKnQEWQASER0rqN3P07Q-qnUHxg&s"],
     "stock": 3,
     "materiales": ["crepé", "algodón"],
     "slug": "vestido-corto-azul-fiesta"
@@ -54,7 +54,7 @@
     "price": 260,
     "currency": "BOB",
     "tags": ["elegante", "formal", "oficial"],
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyNHUK6R1LOHcs9PwX-XE6XQxC64ffqgAvxA&s",
+    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyNHUK6R1LOHcs9PwX-XE6XQxC64ffqgAvxA&s"],
     "stock": 4,
     "materiales": ["satén"],
     "slug": "vestido-midi-verde-oliva"
@@ -74,7 +74,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": "/images/vestidos/vestido-rosa.jpg",
+    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2QEBktxEIVnjKGqLqwuXDl2u4drXWCVDoQ&s"],
     "stock": 6,
     "materiales": ["algodón"],
     "slug": "vestido-corto-rosa-pastel"
@@ -94,7 +94,7 @@
     "price": 320,
     "currency": "BOB",
     "tags": ["gala", "boda", "formal", "noche"],
-    "image": "/images/vestidos/vestido-marino.jpg",
+    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ba3-9NnIKnQEWQASER0rqN3P07Q-qnUHxg&s"],
     "stock": 2,
     "materiales": ["satén"],
     "slug": "vestido-largo-azul-marino-gala"

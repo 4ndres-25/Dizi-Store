@@ -12,6 +12,12 @@
     display: flex;
     flex-direction: column;
 }
+.tarjetaHome__container--carrusel{
+    width: 100%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+}
 .tarjetaHome__img-container{
     height: 90%;
     width: 100%;  
@@ -69,4 +75,9 @@
     overflow: hidden;
     text-overflow: ellipsis;       
 }
+
+
+
+
+
 

@@ -1,6 +1,6 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
+import ProductoSeleccionado from './pages/ProductoSelecionado/Index'
 
 import './App.css'
 
@@ -12,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} ></Route>
+        <Route path='/producto/:slug' element={<ProductoSeleccionado/>}></Route>
       </Routes>
     </BrowserRouter>
       

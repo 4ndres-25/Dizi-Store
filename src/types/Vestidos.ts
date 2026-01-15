@@ -13,7 +13,7 @@ export interface Vestido {
   price: number;
   currency: string; 
   tags: string[];
-  image: string;
+  image: string[];
   stock: number;
   materiales: string[];
   slug: string;        
