@@ -1,0 +1,30 @@
+.menu__iconHamburguer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+.menu__main-container--off{
+    position: absolute;
+    width: 80dvw;
+    height: 100dvh;
+    background-color: white;
+    right: -100%;
+    top: 0;
+    transition: right 0.3s linear;
+}
+
+.menu__main-container--on{
+    right: 0;
+}
+
+.menu__iconClose{
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+}
