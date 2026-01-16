@@ -4,6 +4,8 @@ import type {Vestido} from '../../types/Vestidos'
 import vestidos from '../../data/vestidos.json'
 import styles from './ProductoSeleccionado.module.css'
 import TarjetaHome from '../../components/TarjetaHome/Index'
+import { ImWhatsapp } from "react-icons/im";
+
 
 
 
@@ -28,6 +30,11 @@ function ProductoSeleccionado({}: Props) {
       
     }, [slug])
     console.log(datosProducto?.image)
+
+    const handleWhatsapp = () => {
+        const mensaje = encodeURIComponent(`Hola!😊 Quiero el producto:\n${datosProducto?.name}\n Producto: http://localhost:5173/producto/${datosProducto?.slug}`);
+        window.open(`https://wa.me/59165683668?text=${mensaje}`, "_blank");
+    }
   return (
 
     <div className={styles.productoSeleccionado}>
@@ -46,7 +53,11 @@ function ProductoSeleccionado({}: Props) {
             )}
            
         </div>
-        <label htmlFor="">¿Te interesa este producto? Escribenos</label>
+        <div className={styles["productoSeleccionado__wp-container"]}>
+            <label >¿Te interesa este producto? Escríbenos</label>
+            <button className={styles.productoSeleccionado__whatsapp} onClick={handleWhatsapp}>Consultar sobre este producto <ImWhatsapp className={styles["productoSeleccionado__wp-icon"]}/></button>
+
+        </div>
         <h3 className={styles.productoSeleccionado__h3Descripcion}>Descripción</h3>
         <div className={styles.productoSeleccionado__descripcion}>
             {datosProducto?.descripcion}

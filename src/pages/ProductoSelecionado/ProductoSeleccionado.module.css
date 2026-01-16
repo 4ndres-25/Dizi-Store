@@ -23,6 +23,29 @@
     gap: 5px;
     margin-top: 20px;
 }
+.productoSeleccionado__wp-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.productoSeleccionado__whatsapp{
+    height: 50px;
+    width: 80%;
+    border-radius: 15px;
+    border: none;
+    background-color: #25D366;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.productoSeleccionado__wp-icon{
+    font-size: 30px;
+}
 .productoSeleccionado__ConImagenCarrusel{
     width: 200px;
     height: 300px;
