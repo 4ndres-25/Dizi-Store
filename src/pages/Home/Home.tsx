@@ -28,7 +28,7 @@ const Home = () => {
             <>
             <TarjetaHome
             key={key} 
-            imagen={producto.image} 
+            imagen={producto.image[0]} 
             nombreProducto={producto.name}
             slug={producto.slug} ></TarjetaHome>
             </>
