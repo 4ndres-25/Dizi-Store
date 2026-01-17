@@ -16,15 +16,10 @@ const Home = () => {
     
   }, [])
   
-  const changeDataforSearch = (newData: Vestido[]) => {
-    
+  const changeDataforSearch = (newData: Vestido[]) => {    
     if (newData.length !== 0){
-      setData(newData)
-      
-    }
-    else{
-      console.log("nada")
-    }
+      setData(newData)      
+    }    
   }
   return (
     <div className={styles.home__container}>
