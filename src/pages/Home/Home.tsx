@@ -25,7 +25,7 @@ const Home = () => {
     <div className={styles.home__container}>
         <Header changeData={changeDataforSearch}></Header>
         <h1>DIZI STORE</h1>
-        <h2>VESTIDOS</h2>
+        <h2 className={styles.home__h2}>VESTIDOS</h2>
         <div className={styles.home__tallas}>
             <BotonSimple>XS</BotonSimple>
             <BotonSimple>S</BotonSimple>
