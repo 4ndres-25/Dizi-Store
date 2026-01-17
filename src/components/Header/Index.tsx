@@ -60,6 +60,7 @@ function Header ({changeData}: Props) {
 
       // limpiar si el componente se desmonta o si activo cambia antes
       return () => clearTimeout(timer);
+      return () => clearTimeout(timer2)
     }
     else{
       setOpacityNoMatches(false)
