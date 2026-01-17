@@ -4,16 +4,27 @@ import Header from "../../components/Header/Index"
 import TarjetaHome from "../../components/TarjetaHome/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
+import { useEffect, useState } from "react"
 
 
 
 
 const Home = () => {
-  const data: Vestido[] = vestidos;
+  const [data, setData] = useState<Vestido[]>([])
+  useEffect(() => {
+    setData(vestidos)  
+    
+  }, [])
+  
+  const changeDataforSearch = (newData: Vestido[]) => {    
+    if (newData.length !== 0){
+      setData(newData)      
+    }    
+  }
   return (
     <div className={styles.home__container}>
-        <Header></Header>
-        <h1 >DIZI STORE</h1>
+        <Header changeData={changeDataforSearch}></Header>
+        <h1>DIZI STORE</h1>
         <h2 className={styles.home__h2}>VESTIDOS</h2>
         <div className={styles.home__tallas}>
             <BotonSimple>XS</BotonSimple>
