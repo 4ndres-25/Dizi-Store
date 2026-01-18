@@ -1,0 +1,13 @@
+.favoritos__contenedor{
+    position: relative;
+    box-sizing: border-box;
+}
+.favoritos__h1{
+    margin: 85px 10px 10px 10px;
+}
+.favorito__elemento{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
