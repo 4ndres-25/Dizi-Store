@@ -23,7 +23,7 @@ function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos}: 
     useEffect(() => {
       setNombreUpercase(nombreProducto.toUpperCase())
 
-    }, [])
+    }, [nombreProducto])
 
     const clickIcon = () =>{
       setClick(!click)
