@@ -10,6 +10,42 @@ import { useEffect, useState } from "react"
 
 
 const Home = () => {
+  
+  
+  const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
+    const datosLS = localStorage.getItem("Favoritos");
+    if (!datosLS) return []; 
+    try {
+      return JSON.parse(datosLS); 
+    } catch {
+      return []; 
+    }
+  });
+
+  
+  
+  
+  
+
+  
+
+  useEffect(() => {
+   
+    
+
+    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))
+  
+    
+  }, [idFavoritos])
+  
+
+  const funcionFavoritos = (id : number) =>{
+    if(id){
+      setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
+    }
+  }
+  /* console.log(idFavoritos) */
+
   const [data, setData] = useState<Vestido[]>([])
   useEffect(() => {
     setData(vestidos)  
@@ -41,7 +77,8 @@ const Home = () => {
             key={key} 
             imagen={producto.image[0]} 
             nombreProducto={producto.name}
-            slug={producto.slug} ></TarjetaHome>
+            slug={producto.slug}
+            handleFavoritos={()=>funcionFavoritos(producto.id)} ></TarjetaHome>
             </>
           ))
           

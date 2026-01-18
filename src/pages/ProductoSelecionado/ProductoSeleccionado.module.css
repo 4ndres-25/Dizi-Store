@@ -19,6 +19,27 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
+}
+.productoSeleccionado__modalImg{
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
+    left: 0;
+    top: 0;
+}
+.productoSeleccionado__modalImg--off{
+    display: none;
+}
+.modalImg__iconClose{
+    position: absolute;
+    z-index: 1000;
+    font-size: 45px;
+    margin: 15px;
+    right: 0;
+    cursor: pointer;
 }
 .productoSeleccionado__otrasImagenes{
     display: flex;
@@ -49,6 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    cursor: pointer;
 }
 .productoSeleccionado__wp-icon{
     font-size: 30px;
@@ -62,6 +84,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 .productoSeleccionado__h3Descripcion{
     margin-left: 10px;
