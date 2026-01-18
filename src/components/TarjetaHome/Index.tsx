@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import styles from "./TarjetaHome.module.css"
 import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
-import type {Vestido} from '../../types/Vestidos'
 import { FaHeart } from "react-icons/fa";
 
 

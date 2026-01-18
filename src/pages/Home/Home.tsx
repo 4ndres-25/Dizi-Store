@@ -10,8 +10,8 @@ import { useEffect, useState } from "react"
 
 
 const Home = () => {
-  const data: Vestido[] = vestidos;
-  const [datosFavoritos, setDatosFavoritos] = useState([])
+  
+  
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
     if (!datosLS) return []; 
@@ -46,11 +46,22 @@ const Home = () => {
   }
   /* console.log(idFavoritos) */
 
+  const [data, setData] = useState<Vestido[]>([])
+  useEffect(() => {
+    setData(vestidos)  
+    
+  }, [])
+  
+  const changeDataforSearch = (newData: Vestido[]) => {    
+    if (newData.length !== 0){
+      setData(newData)      
+    }    
+  }
   return (
     <div className={styles.home__container}>
-        <Header></Header>
+        <Header changeData={changeDataforSearch}></Header>
         <h1>DIZI STORE</h1>
-        <h2>VESTIDOS</h2>
+        <h2 className={styles.home__h2}>VESTIDOS</h2>
         <div className={styles.home__tallas}>
             <BotonSimple>XS</BotonSimple>
             <BotonSimple>S</BotonSimple>
