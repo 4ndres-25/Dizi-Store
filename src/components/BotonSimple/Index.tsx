@@ -1,15 +1,16 @@
 
-import type { ReactNode } from 'react'
 import styles from './BotonSimple.module.css'
 
 
 type Props = {
-  children : ReactNode 
+  children : string
+  active: boolean
+  changeSize?: (talla: string) => void 
 }
 
-function BotonSimple({children}: Props) {
+function BotonSimple({children, changeSize, active}: Props) {
   return (
-    <button className={styles.button}>{children}</button>
+    <button className={`${styles.button} ${active ? styles["button--selected"]:""}`} onClick={()=>changeSize?.(children)}>{children}</button>
   )
 }
  
