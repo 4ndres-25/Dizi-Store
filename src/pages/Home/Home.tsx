@@ -10,7 +10,10 @@ import { useEffect, useState } from "react"
 
 
 const Home = () => {
-  
+  const [data, setData] = useState<Vestido[]>([])
+  const sizes = ["XS","S","M","L","XL","XXL"]
+  const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
+  const [sizeSelected, setSizeSelected] = useState("")
   
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
@@ -22,20 +25,8 @@ const Home = () => {
     }
   });
 
-  
-  
-  
-  
-
-  
-
   useEffect(() => {
-   
-    
-
-    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))
-  
-    
+    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))   
   }, [idFavoritos])
   
 
@@ -44,31 +35,43 @@ const Home = () => {
       setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
     }
   }
-  /* console.log(idFavoritos) */
+  
 
-  const [data, setData] = useState<Vestido[]>([])
   useEffect(() => {
-    setData(vestidos)  
-    
+    setData(vestidos)
+    setHayBusqueda(vestidos)      
   }, [])
   
-  const changeDataforSearch = (newData: Vestido[]) => {    
+  const changeDataforSearch = (newData: Vestido[]) => {  
+    setHayBusqueda(newData)
     if (newData.length !== 0){
       setData(newData)      
     }    
   }
+
+  const handleChangeSize = (talla : string) =>{
+    setSizeSelected(talla)
+    setData(hayBusqueda.filter(p => p.tallas.some(t => t === talla)))
+    
+    /* if(hayBusqueda === 0){
+      setData(vestidos.filter(p => p.tallas.some(t => t === talla)))
+    }
+    else{
+      setData(data.filter(p => p.tallas.some(t => t === talla)))
+
+    } */
+  }
+  console.log(data)
   return (
     <div className={styles.home__container}>
         <Header changeData={changeDataforSearch}></Header>
         <h1>DIZI STORE</h1>
         <h2 className={styles.home__h2}>VESTIDOS</h2>
         <div className={styles.home__tallas}>
-            <BotonSimple>XS</BotonSimple>
-            <BotonSimple>S</BotonSimple>
-            <BotonSimple>M</BotonSimple>
-            <BotonSimple>L</BotonSimple>
-            <BotonSimple>XL</BotonSimple>
-            <BotonSimple>XXL</BotonSimple>
+          {sizes.map((value, key)=>(
+            <BotonSimple changeSize={handleChangeSize} active={sizeSelected === value}>{value}</BotonSimple>
+          ))}
+            
         </div>
         <div className={styles["home__cards-container"]}>
           {data.map((producto, key)=>(

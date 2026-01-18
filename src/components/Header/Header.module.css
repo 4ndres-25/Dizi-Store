@@ -104,10 +104,11 @@
     opacity: 1;
     background-color: white;
     border: solid 1px red;
-    padding: 10px;
+    padding-left: 20px;
     height: fit-content;
-    width: fit-content;
+    width: 100dvw;
     font-size: 12px;
+    box-sizing: border-box;
 }
 .header__noMatches--on{
     display: flex;

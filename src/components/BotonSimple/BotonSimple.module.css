@@ -6,3 +6,8 @@
     width: 30%;
     height: 50px;
 }
+
+.button--selected{
+    background-color: black;
+    color: white;
+}
