@@ -5,8 +5,13 @@ import vestidos from '../../data/vestidos.json'
 import styles from './ProductoSeleccionado.module.css'
 import TarjetaHome from '../../components/TarjetaHome/Index'
 import { ImWhatsapp } from "react-icons/im";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import { useRef } from "react";
 
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+
+import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
+import type { ReactZoomPanPinchRef } from "react-zoom-pan-pinch";
 
 
 
@@ -17,6 +22,9 @@ function ProductoSeleccionado({}: Props) {
     const { slug } = useParams<{ slug: string }>();
     const [datosProducto, setDatosProducto] = useState<Vestido | null>(null)
     const [indexImg, setIndexImg] = useState(0)
+    const [modalState, setmodalState] = useState(false)
+    const zoomRef = useRef<ReactZoomPanPinchRef | null>(null);
+
     
     const data: Vestido[] = vestidos
     /* console.log(data[1].image) */
@@ -40,13 +48,25 @@ function ProductoSeleccionado({}: Props) {
     const showImage = (index : number) =>{
         setIndexImg(index)
     }
+
+    const openModalImg =()=>{
+        setmodalState(!modalState)
+        zoomRef.current?.resetTransform(0)
+    }
+    
+
   return (
 
     <div className={styles.productoSeleccionado}>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
         <h2 className={styles.productoSeleccionado__h2Disponible}>DISPONIBLE</h2>
-        <div className={styles.productoSeleccionado__ContainerImagenPrincipal}>
-            <TransformWrapper >
+        <div className={styles[`${modalState?"productoSeleccionado__modalImg":"productoSeleccionado__modalImg--off"}`]}>
+            <IoMdCloseCircleOutline className={styles.modalImg__iconClose} onClick={openModalImg}/>
+            <TransformWrapper
+            ref={zoomRef}
+            initialScale={1}
+            centerOnInit={true}
+            >
                 <TransformComponent wrapperStyle={{
                     width: "100%",
                     height: "100%",
@@ -59,6 +79,9 @@ function ProductoSeleccionado({}: Props) {
                     <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" />
                 </TransformComponent>
             </TransformWrapper>
+        </div>
+        <div className={styles.productoSeleccionado__ContainerImagenPrincipal}>
+             <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" onClick={openModalImg}/>
         </div>
         <div className={styles.productoSeleccionado__otrasImagenes}>
             {datosProducto?.image.map((element, key)=>(

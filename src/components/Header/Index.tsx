@@ -24,7 +24,7 @@ function Header ({}: Props) {
         </div>
         <nav className={styles.header__nav}>
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
-            <Link to={"/Favortios"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
+            <Link to={"/Favoritos"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
             <Menu></Menu>
 
         </nav>
