@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaRegHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import Logo from '../../assets/Images/Captura_Dizi_Logo.jpg'
+import Logo from '../../assets/Images/dizi.jpg'
 import styles from './Header.module.css'
 import { IoClose } from "react-icons/io5";
 import { useEffect, useState} from "react";
