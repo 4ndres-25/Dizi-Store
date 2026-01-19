@@ -7,6 +7,7 @@ import TarjetaHome from '../../components/TarjetaHome/Index'
 import { ImWhatsapp } from "react-icons/im";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRef } from "react";
+import Header from '../../components/Header/Index'
 
 
 
@@ -24,6 +25,21 @@ function ProductoSeleccionado({}: Props) {
     const [indexImg, setIndexImg] = useState(0)
     const [modalState, setmodalState] = useState(false)
     const zoomRef = useRef<ReactZoomPanPinchRef | null>(null);
+
+    const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
+    const datosLS = localStorage.getItem("Favoritos");
+    if (!datosLS) return []; 
+    try {
+      return JSON.parse(datosLS); 
+    } catch {
+      return []; 
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))   
+  }, [idFavoritos])
+
 
     
     const data: Vestido[] = vestidos
@@ -43,7 +59,7 @@ function ProductoSeleccionado({}: Props) {
 
     const handleWhatsapp = () => {
         const mensaje = encodeURIComponent(`Hola!😊 Quiero el producto:\n${datosProducto?.name}\n Producto: http://localhost:5173/producto/${datosProducto?.slug}`);
-        window.open(`https://wa.me/59165683668?text=${mensaje}`, "_blank");
+        window.open(`https://wa.me/59172234794?text=${mensaje}`, "_blank");
     }
     const showImage = (index : number) =>{
         setIndexImg(index)
@@ -53,11 +69,18 @@ function ProductoSeleccionado({}: Props) {
         setmodalState(!modalState)
         zoomRef.current?.resetTransform(0)
     }
+
+    const funcionFavoritos = (id : number) =>{
+    if(id){
+      setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
+    }
+  }
     
 
   return (
 
     <div className={styles.productoSeleccionado}>
+        <Header></Header>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
         <h2 className={styles.productoSeleccionado__h2Disponible}>DISPONIBLE</h2>
         <div className={styles[`${modalState?"productoSeleccionado__modalImg":"productoSeleccionado__modalImg--off"}`]}>
@@ -119,7 +142,8 @@ function ProductoSeleccionado({}: Props) {
                         nombreProducto={element.name} 
                         slug={element.slug}
                         key={key}
-                        clase='tarjetaHome__container--carrusel'></TarjetaHome>
+                        clase='tarjetaHome__container--carrusel'
+                        handleFavoritos={()=>funcionFavoritos(element.id)}></TarjetaHome>
                         </div>
                          
                         
