@@ -25,9 +25,11 @@ function ProductoSeleccionado({}: Props) {
     const [indexImg, setIndexImg] = useState(0)
     const [modalState, setmodalState] = useState(false)
     const zoomRef = useRef<ReactZoomPanPinchRef | null>(null);
+    const [animationImg, setanimationImg] = useState<number>()
 
     const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
+    
     if (!datosLS) return []; 
     try {
       return JSON.parse(datosLS); 
@@ -61,8 +63,10 @@ function ProductoSeleccionado({}: Props) {
         const mensaje = encodeURIComponent(`Hola!😊 Quiero el producto:\n${datosProducto?.name}\n Producto: http://localhost:5173/producto/${datosProducto?.slug}`);
         window.open(`https://wa.me/59172234794?text=${mensaje}`, "_blank");
     }
-    const showImage = (index : number) =>{
+    const showImage = (index : number , key : number) =>{
         setIndexImg(index)
+        setanimationImg(key)
+
     }
 
     const openModalImg =()=>{
@@ -110,7 +114,7 @@ function ProductoSeleccionado({}: Props) {
             {datosProducto?.image.map((element, key)=>(
                 
                 <div key={key} className={styles.productoSeleccionado__ConImagenCarrusel}>
-                    <img className={styles.productoSeleccionado__ImagenCarrusel} src={element} alt="" onClick={()=>showImage(datosProducto.image.indexOf(element))} />
+                    <img className={`${styles["productoSeleccionado__ImagenCarrusel"]} ${animationImg===key? styles["productoSeleccionado__ImagenCarrusel--click"]: ""} ` } src={element} alt="" onClick={()=>showImage(datosProducto.image.indexOf(element), key)} />
                 </div>
             )
             )}

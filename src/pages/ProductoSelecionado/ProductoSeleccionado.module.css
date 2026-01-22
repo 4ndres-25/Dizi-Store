@@ -52,7 +52,10 @@
     gap: 5px;
     margin-top: 20px;
     
+    
 }
+
+
 .productoSeleccionado__wp-container{
     display: flex;
     flex-direction: column;
@@ -87,6 +90,20 @@
     height: 100%;
     object-fit: cover;
     cursor: pointer;
+
+
+}
+.productoSeleccionado__ImagenCarrusel--click{
+   
+    
+    animation: clickEffect 0.5s linear;
+}
+
+@keyframes clickEffect {
+    0%   { transform: scale(1); }
+    20%  { transform: scale(0.9); }
+    60%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 .productoSeleccionado__h3Descripcion{
     margin-left: 10px;
