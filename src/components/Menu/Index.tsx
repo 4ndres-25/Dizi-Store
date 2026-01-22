@@ -29,23 +29,23 @@ function Menu({}: Props) {
           <h2 className={styles.menu__h2}>SIGUENOS EN NUESTRAS REDES SOCIALES</h2>
           <div className={styles.menu__redesSociales}>
             <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--facebook"]}`} href="">
-              <a className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--facebook"]}`}>
+              <div className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--facebook"]}`}>
                 <FaFacebook className={`${styles.menu__redIconFacebook}`}/>
-              </a>
+              </div>
               <p>Dizi Store</p>
             </a>
 
             <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--whatsapp"]}`}>
-              <a className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--whatsapp"]}`}>
+              <div className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--whatsapp"]}`}>
                 <IoLogoWhatsapp className={`${styles.menu__redIconWhatsapp}`}/>
-              </a>
+              </div>
               <p>Dizi Store</p>
             </a>
 
             <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--tiktok"]}`} href="https://www.tiktok.com/@dizistore.bol">
-              <a className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--tiktok"]}`} href="https://www.tiktok.com/@dizistore.bol">
+              <div className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--tiktok"]}`}>
                 <FaTiktok className={`${styles.menu__redIconTiktok}`}/>
-              </a>
+              </div>
               <p>Dizi Store</p>
             </a>
           </div>
