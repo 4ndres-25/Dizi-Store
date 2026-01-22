@@ -16,19 +16,26 @@ type Props = {
  
 function Header ({changeData}: Props) {
    const [searchState, setSearchState] = useState("header__search--off")
-   const [inputValue, setInputValue] = useState("")
+   const [inputValue, setInputValue] = useState<string[]>([])
    const [noMatches, setNoMatches] = useState(false)
    const [searchClicked, setSearchClicked] = useState(false)
    const [opacityNoMatches, setOpacityNoMatches] = useState(false)
    const [dataFiltrado, setDataFiltrado] = useState<Vestido[]>([])
    const data: Vestido[] = vestidos;
+   //
+   let nuevo:string[] = []
+   let objeto1 = [{id: 0, r: 0}]
+   let arrayNum :number[] = []
+   let arraySinRepetidos : number[]= []
+   let f: any[]= []
+   let final: any[] = []
+   const [mostrar, setMostrar] = useState<Vestido[]>([]);//ojo copiar del otro
    /* const dataFiltrado: Vestido[] = [] */
    useEffect(() => {
     if(changeData){
       changeData(dataFiltrado)
     }
     if(searchClicked){
-      console.log("es click")
       if(dataFiltrado?.length === 0){
         console.log("no coincidencias")
         setNoMatches(noMatches ? noMatches : !noMatches)
@@ -46,9 +53,7 @@ function Header ({changeData}: Props) {
    
 
    useEffect(() => {
-     console.log("SADWDAWFAFWWFAWFAAWFAF")
     if (noMatches === true) {
-      console.log("SADWDAWFAFWWFAWFAAWFAF")
       const timer = setTimeout(() => {
         setOpacityNoMatches(true)
       }, 5000);
@@ -74,16 +79,54 @@ function Header ({changeData}: Props) {
  }
  const handleChangeSearch = (e : React.ChangeEvent<HTMLInputElement>) => {
     const newE = e.target.value.toLowerCase()
-    setInputValue(newE)
+    setInputValue(newE.split(" "))
  }
+ 
  const handleSearchProduct = () =>{
-  const newData = data.filter(v => v.tags.some(item => item === inputValue) )
-   setDataFiltrado(newData)
+  setDataFiltrado([])
+  data.map((value,key)=>{
+      nuevo = inputValue.filter(e => value.tags.includes(e))
+      
+
+      objeto1.push( {
+        id: value.id,
+        r: nuevo.length, 
+      })
+      if(nuevo.length > 0){
+        arrayNum.push(nuevo.length)
+
+      }
+    
+    })
+    arrayNum.sort((a,b)=>b-a)
+    arraySinRepetidos = [...new Set(arrayNum)]
+
+    
+      
+    arraySinRepetidos.map(value => {
+      f = objeto1.filter(e => e.r === value)
+      f.map((df)=>{
+        final.push(df)
+      })
+        
+      })
+
+      final.map((value)=>{
+        const encontrado = data.find(s => s.id === value.id )
+        if(encontrado){
+          setDataFiltrado(prev => [...prev,encontrado])
+        }
+      })
+
+
+
+  //aqui poner el resultado final
+   /* setDataFiltrado(mostrar) */
    setSearchClicked(true)
      
  }
- console.log(`N matches: ${noMatches}`)
- console.log(dataFiltrado.length)
+ /* console.log(`N matches: ${noMatches}`)
+ console.log(dataFiltrado.length) */
   return (
     <>
     <header className={styles.header__container}>
