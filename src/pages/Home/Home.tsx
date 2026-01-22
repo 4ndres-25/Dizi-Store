@@ -11,7 +11,7 @@ import { useEffect, useState } from "react"
 
 const Home = () => {
   const [data, setData] = useState<Vestido[]>([])
-  const sizes = ["XS","S","M","L","XL","XXL"]
+  const sizes = ["Todas las tallas","XXS","XS","S","M","L","XL","XXL"]
   const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
   const [sizeSelected, setSizeSelected] = useState("")
   
@@ -50,16 +50,17 @@ const Home = () => {
   }
 
   const handleChangeSize = (talla : string) =>{
-    setSizeSelected(talla)
-    setData(hayBusqueda.filter(p => p.tallas.some(t => t === talla)))
-    
-    /* if(hayBusqueda === 0){
-      setData(vestidos.filter(p => p.tallas.some(t => t === talla)))
-    }
-    else{
-      setData(data.filter(p => p.tallas.some(t => t === talla)))
+    if(talla === "Todas las tallas"){
+      setSizeSelected(talla)
+      setData(hayBusqueda)
+    }else{
+      setSizeSelected(talla)
+      setData(hayBusqueda.filter(p => p.tallas.some(t => t === talla)))
 
-    } */
+    }
+
+    
+    
   }
   console.log(data)
   return (

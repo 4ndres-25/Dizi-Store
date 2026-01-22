@@ -15,7 +15,9 @@
 .home__tallas{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 8px;
 }
 .home__cards-container{
     display: flex;
