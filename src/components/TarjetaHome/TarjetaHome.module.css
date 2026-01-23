@@ -39,6 +39,7 @@
     height: 90%;
     width: 100%;  
     position: relative;
+    background-color: white;
 }
 
 .tarjetaHome__link-img{
@@ -49,7 +50,14 @@
 .tarjetaHome__img{
     height: 100%;
     width: 100%;    
-    object-fit: cover;
+    object-fit: contain;
+    filter: drop-shadow(0px 8px 10px rgba(0,0,0,0.5));
+    mask-image: linear-gradient(
+        transparent,
+        black 20%
+    )
+
+
 }
 
 .tarjetaHome__like{
