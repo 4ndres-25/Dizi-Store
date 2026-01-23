@@ -1,0 +1,39 @@
+.footer__link{
+    text-decoration: none;
+      color: inherit; 
+
+}
+.footer__container{
+    display: flex;
+    background-color: black;
+    
+}
+.footer__referencia{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 60%;
+    color: white;
+}
+
+.footer__div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+}
+
+.footer__redes{
+    height: 100px;
+    width: 40%;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer__icon{
+    color: white;
+}
+
