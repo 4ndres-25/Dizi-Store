@@ -28,14 +28,14 @@ function Menu({}: Props) {
         <div >
           <h2 className={styles.menu__h2}>SIGUENOS EN NUESTRAS REDES SOCIALES</h2>
           <div className={styles.menu__redesSociales}>
-            <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--facebook"]}`} href="">
+            <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--facebook"]}`} href="https://www.facebook.com/share/17j4H6Ln84/">
               <div className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--facebook"]}`}>
                 <FaFacebook className={`${styles.menu__redIconFacebook}`}/>
               </div>
               <p>Dizi Store</p>
             </a>
 
-            <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--whatsapp"]}`}>
+            <a className={`${styles.menu__redSocial} ${styles["menu__redSocial--whatsapp"]}`} href="https://wa.me/59172234794">
               <div className={`${styles.menu__redCirculo} ${styles["menu__redCirculo--whatsapp"]}`}>
                 <IoLogoWhatsapp className={`${styles.menu__redIconWhatsapp}`}/>
               </div>
