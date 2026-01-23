@@ -9,6 +9,13 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRef } from "react";
 import Header from '../../components/Header/Index'
 import Footer from '../../components/Footer/Index'
+import { GiDress } from "react-icons/gi";
+import { IoColorPalette } from "react-icons/io5";
+import { GiRolledCloth } from "react-icons/gi";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { GiYarn } from "react-icons/gi";
+import { FaPlus } from "react-icons/fa6";
+import { GiForearm } from "react-icons/gi";
 
 
 
@@ -27,6 +34,7 @@ function ProductoSeleccionado({}: Props) {
     const [modalState, setmodalState] = useState(false)
     const zoomRef = useRef<ReactZoomPanPinchRef | null>(null);
     const [animationImg, setanimationImg] = useState<number>()
+    const [stateInformation, setstateInformation] = useState(false)
 
     const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
@@ -80,7 +88,9 @@ function ProductoSeleccionado({}: Props) {
       setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
     }
   }
-    
+  const mostrarMasInformacion = () =>{
+    setstateInformation(!stateInformation)
+  }
 
   return (
 
@@ -129,6 +139,38 @@ function ProductoSeleccionado({}: Props) {
         <h3 className={styles.productoSeleccionado__h3Descripcion}>Descripción</h3>
         <div className={styles.productoSeleccionado__descripcion}>
             {datosProducto?.descripcion}
+        </div>
+        <div className={styles.productoSeleccionado__masInformacion}>
+            <div className={styles.masInformacion__desplegable} onClick={mostrarMasInformacion}>
+                <h3 className={styles.masInformacion__h3}>Ver más información del producto</h3>
+                <FaPlus className={styles.masInformacion__iconPlus}/>
+            </div>
+            <div className={`${stateInformation?styles.masInformacion__container:styles["masInformacion__container--off"]}`}>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><GiDress className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.estilo}</p>
+                </div>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><IoColorPalette className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Tono:</strong>  {datosProducto?.tono}</p>
+                </div>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><GiRolledCloth className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Tipo de tela:</strong>  {datosProducto?.tipo_tela}</p>
+                </div>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><MdOutlineWbSunny className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Temporada:</strong>  {datosProducto?.temporada?.join(", ")}</p>
+                </div>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><GiYarn className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Materiales:</strong>  {datosProducto?.materiales?.join(", ")}</p>
+                </div>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><GiForearm className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Mangas:</strong>  {datosProducto?.mangas}</p>
+                </div>
+            </div>
         </div>
         <h3 className={styles.productoSeleccionado__h3ProductoRelacionado}>PRODUCTOS RELACIONADOS</h3>
         <div className={styles.carrusel__container}>
