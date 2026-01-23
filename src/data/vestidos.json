@@ -17,6 +17,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ba3-9NnIKnQEWQASER0rqN3P07Q-qnUHxg&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyNHUK6R1LOHcs9PwX-XE6XQxC64ffqgAvxA&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s"],
     "stock": 5,
     "materiales": ["lentejuelas", "corset"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-elegante-rojo"
   },
   {
@@ -37,6 +38,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Gi9ALrPRcM1G-7urQIjOIkYwQjcplMr0QA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ba3-9NnIKnQEWQASER0rqN3P07Q-qnUHxg&s"],
     "stock": 3,
     "materiales": ["crepé", "algodón"],
+    "mangas" : "Manga corta",
     "slug": "vestido-corto-azul-fiesta"
   },
   {
@@ -57,6 +59,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyNHUK6R1LOHcs9PwX-XE6XQxC64ffqgAvxA&s"],
     "stock": 4,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-midi-verde-oliva"
   },
   {
@@ -77,6 +80,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2QEBktxEIVnjKGqLqwuXDl2u4drXWCVDoQ&s"],
     "stock": 6,
     "materiales": ["algodón"],
+    "mangas" : "Manga corta",
     "slug": "vestido-corto-rosa-pastel"
   },
   {
@@ -97,6 +101,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -117,6 +122,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -137,6 +143,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -157,6 +164,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -177,6 +185,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -197,6 +206,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -217,6 +227,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -237,6 +248,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -257,6 +269,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -277,6 +290,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -297,6 +311,7 @@
     "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
     "stock": 2,
     "materiales": ["satén"],
+    "mangas" : "Manga corta",
     "slug": "vestido-largo-azul-marino-gala"
   }
   
