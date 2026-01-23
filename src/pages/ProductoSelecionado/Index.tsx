@@ -8,6 +8,7 @@ import { ImWhatsapp } from "react-icons/im";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRef } from "react";
 import Header from '../../components/Header/Index'
+import Footer from '../../components/Footer/Index'
 
 
 
@@ -167,6 +168,7 @@ function ProductoSeleccionado({}: Props) {
                 }</div>
             ))}
         </div>
+        <Footer></Footer>
     </div>
   )
 }

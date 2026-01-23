@@ -5,6 +5,7 @@ import TarjetaHome from "../../components/TarjetaHome/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
 import { useEffect, useState } from "react"
+import Footer from "../../components/Footer/Index"
 
 
 
@@ -95,7 +96,8 @@ const Home = () => {
             ¡Bienvenidos a DIZI STORE! 🌸✨
             En nuestra tienda online encontrarás vestidos, tacones, maquillaje y más, pensados para que luzcas increíble en cada ocasión. Nos ubicamos en Cochabamba, Bolivia, y realizamos envíos a todos los departamentos y provincias del país, para que disfrutes de tus compras sin importar dónde estés. Calidad, estilo y comodidad al alcance de un clic.
             </p>
-        </div>      
+        </div> 
+        <Footer></Footer>
     </div>
   )
 }
