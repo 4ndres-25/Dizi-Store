@@ -58,7 +58,7 @@
     "price": 260,
     "currency": "BOB",
     "tags": ["elegante", "formal", "oficial", "verde"],
-    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyNHUK6R1LOHcs9PwX-XE6XQxC64ffqgAvxA&s"],
+    "image": ["https://i.imgur.com/9xBZJLu.png", "https://i.imgur.com/YllL0p6.png"],
     "stock": 4,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
@@ -124,12 +124,12 @@
     "price": 320,
     "currency": "BOB",
     "tags": ["gala", "boda", "formal", "noche", "azul"],
-    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
+    "image": ["https://i.imgur.com/CZIh0DX.png", "https://i.imgur.com/JvoL8I6.png"],
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
     "corte": "Sirena",
-    "slug": "vestido-largo-azul-marino-gala"
+    "slug": "vestido-corto-amarillo"
   },
   {
     "id": 7,
