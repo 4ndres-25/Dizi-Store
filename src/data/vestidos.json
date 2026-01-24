@@ -80,7 +80,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2QEBktxEIVnjKGqLqwuXDl2u4drXWCVDoQ&s"],
+    "image": ["https://i.imgur.com/4oYEudL.png","https://i.imgur.com/YWRZg6o.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -102,12 +102,12 @@
     "price": 320,
     "currency": "BOB",
     "tags": ["gala", "boda", "formal", "noche", "azul"],
-    "image": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPZT2ukgbnKCllVa3fonlcxglj_g-rhEotQ&s"],
+    "image": ["https://i.imgur.com/upRszIw.png", "https://i.imgur.com/PkAriUt.png"],
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
     "corte": "Sirena",
-    "slug": "vestido-largo-azul-marino-gala"
+    "slug": "vestido-lila-lentejuelas-largo"
   },
   {
     "id": 6,
