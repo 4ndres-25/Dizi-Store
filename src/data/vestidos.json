@@ -17,7 +17,8 @@
     "image": ["https://i.imgur.com/uaKuvkC.png", "https://i.imgur.com/6TPbVyd.png","https://i.imgur.com/IXd0FTP.png"],
     "stock": 5,
     "materiales": ["lentejuelas", "corset"],
-    "mangas" : "Manga corta",
+    "mangas": "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-elegante-rojo"
   },
   {
@@ -39,6 +40,7 @@
     "stock": 3,
     "materiales": ["crepé", "algodón"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-corto-azul-fiesta"
   },
   {
@@ -60,6 +62,7 @@
     "stock": 4,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-midi-verde-oliva"
   },
   {
@@ -81,6 +84,7 @@
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-corto-rosa-pastel"
   },
   {
@@ -102,6 +106,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -123,6 +128,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -144,6 +150,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -165,6 +172,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -186,6 +194,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -207,6 +216,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -228,6 +238,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -249,6 +260,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -270,6 +282,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -291,6 +304,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   },
   {
@@ -312,6 +326,7 @@
     "stock": 2,
     "materiales": ["satén"],
     "mangas" : "Manga corta",
+    "corte": "Sirena",
     "slug": "vestido-largo-azul-marino-gala"
   }
   

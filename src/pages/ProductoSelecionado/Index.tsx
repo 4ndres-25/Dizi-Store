@@ -16,8 +16,9 @@ import { MdOutlineWbSunny } from "react-icons/md";
 import { GiYarn } from "react-icons/gi";
 import { FaPlus } from "react-icons/fa6";
 import { GiForearm } from "react-icons/gi";
-
-
+import { FaMinus } from "react-icons/fa6"
+import { MdOutlineCheckroom } from "react-icons/md";
+import NotificacionFavoritos from '../../components/NotificacionFavoritos/Index'
 
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import type { ReactZoomPanPinchRef } from "react-zoom-pan-pinch";
@@ -35,6 +36,8 @@ function ProductoSeleccionado({}: Props) {
     const zoomRef = useRef<ReactZoomPanPinchRef | null>(null);
     const [animationImg, setanimationImg] = useState<number>()
     const [stateInformation, setstateInformation] = useState(false)
+    const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
+    const [coincide, setCoincide] = useState<boolean>()
 
     const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
@@ -51,7 +54,16 @@ function ProductoSeleccionado({}: Props) {
     localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))   
   }, [idFavoritos])
 
-
+  useEffect(() => {
+    if(notificacionFavoritos){
+      const timer = setTimeout(() => {
+        setNotificacionFavoritos(false)
+      }, 5000);
+    return () => clearTimeout(timer);
+    }
+  
+    
+  }, [notificacionFavoritos])
     
     const data: Vestido[] = vestidos
     /* console.log(data[1].image) */
@@ -84,9 +96,11 @@ function ProductoSeleccionado({}: Props) {
     }
 
     const funcionFavoritos = (id : number) =>{
+    setCoincide(idFavoritos.includes(id)?false:true)
     if(id){
       setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
     }
+    setNotificacionFavoritos(true)
   }
   const mostrarMasInformacion = () =>{
     setstateInformation(!stateInformation)
@@ -96,6 +110,7 @@ function ProductoSeleccionado({}: Props) {
 
     <div className={styles.productoSeleccionado}>
         <Header></Header>
+        <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
         <h2 className={styles.productoSeleccionado__h2Disponible}>DISPONIBLE</h2>
         <div className={styles[`${modalState?"productoSeleccionado__modalImg":"productoSeleccionado__modalImg--off"}`]}>
@@ -143,7 +158,7 @@ function ProductoSeleccionado({}: Props) {
         <div className={styles.productoSeleccionado__masInformacion}>
             <div className={styles.masInformacion__desplegable} onClick={mostrarMasInformacion}>
                 <h3 className={styles.masInformacion__h3}>Ver más información del producto</h3>
-                <FaPlus className={styles.masInformacion__iconPlus}/>
+                {stateInformation?<FaMinus className={styles.masInformacion__iconPlus}/>:<FaPlus className={styles.masInformacion__iconPlus}/>}
             </div>
             <div className={`${stateInformation?styles.masInformacion__container:styles["masInformacion__container--off"]}`}>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
@@ -159,8 +174,8 @@ function ProductoSeleccionado({}: Props) {
                     <p className={styles.masInformacion__p}><strong>Tipo de tela:</strong>  {datosProducto?.tipo_tela}</p>
                 </div>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                    <div className={styles.masInformacion__containerIcon}><MdOutlineWbSunny className={styles.masInformacion__icon}/></div> 
-                    <p className={styles.masInformacion__p}><strong>Temporada:</strong>  {datosProducto?.temporada?.join(", ")}</p>
+                    <div className={styles.masInformacion__containerIcon}><MdOutlineCheckroom className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Corte:</strong>  {datosProducto?.corte}</p>
                 </div>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
                     <div className={styles.masInformacion__containerIcon}><GiYarn className={styles.masInformacion__icon}/></div> 
@@ -170,6 +185,11 @@ function ProductoSeleccionado({}: Props) {
                     <div className={styles.masInformacion__containerIcon}><GiForearm className={styles.masInformacion__icon}/></div> 
                     <p className={styles.masInformacion__p}><strong>Mangas:</strong>  {datosProducto?.mangas}</p>
                 </div>
+                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
+                    <div className={styles.masInformacion__containerIcon}><MdOutlineWbSunny className={styles.masInformacion__icon}/></div> 
+                    <p className={styles.masInformacion__p}><strong>Temporada:</strong>  {datosProducto?.temporada?.join(", ")}</p>
+                </div>
+                
             </div>
         </div>
         <h3 className={styles.productoSeleccionado__h3ProductoRelacionado}>PRODUCTOS RELACIONADOS</h3>
@@ -190,7 +210,8 @@ function ProductoSeleccionado({}: Props) {
                         slug={element.slug}
                         key={key}
                         clase='tarjetaHome__container--carrusel'
-                        handleFavoritos={()=>funcionFavoritos(element.id)}></TarjetaHome>
+                        handleFavoritos={()=>funcionFavoritos(element.id)}
+                        id={element.id}></TarjetaHome>
                         </div>
                          
                         
