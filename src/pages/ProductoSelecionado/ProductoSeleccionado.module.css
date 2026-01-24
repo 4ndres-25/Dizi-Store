@@ -14,12 +14,18 @@
 .productoSeleccionado__ContainerImagenPrincipal{
     width: 100%;
     height: 80vh;
+    background-color: #EEEEEE;
 }
 .productoSeleccionado__ImagenPrincipal{
     width: 100%;
     height: 100%;
     object-fit: contain;
     cursor: pointer;
+    mask-image: linear-gradient(
+        transparent,
+        black 4%
+    )
+
 }
 .productoSeleccionado__modalImg{
     position: fixed;
