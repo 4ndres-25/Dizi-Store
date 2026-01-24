@@ -6,7 +6,7 @@ import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
 import { useEffect, useState } from "react"
 import Footer from "../../components/Footer/Index"
-
+import NotificacionFavoritos from "../../components/NotificacionFavoritos/Index"
 
 
 
@@ -15,6 +15,9 @@ const Home = () => {
   const sizes = ["Todas las tallas","XXS","XS","S","M","L","XL","XXL"]
   const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
   const [sizeSelected, setSizeSelected] = useState("")
+  const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
+  const [coincide, setCoincide] = useState<boolean>()
+
   
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
@@ -30,11 +33,25 @@ const Home = () => {
     localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))   
   }, [idFavoritos])
   
+  useEffect(() => {
+    if(notificacionFavoritos){
+      const timer = setTimeout(() => {
+        setNotificacionFavoritos(false)
+      }, 5000);
+    return () => clearTimeout(timer);
+    }
+  
+    
+  }, [notificacionFavoritos])
+  
 
   const funcionFavoritos = (id : number) =>{
+    setCoincide(idFavoritos.includes(id)?false:true)
     if(id){
       setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
     }
+    setNotificacionFavoritos(true)
+    
   }
   
 
@@ -66,12 +83,13 @@ const Home = () => {
   console.log(data)
   return (
     <div className={styles.home__container}>
+        
         <Header changeData={changeDataforSearch}></Header>
-        <h1>DIZI STORE</h1>
+        <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h2 className={styles.home__h2}>VESTIDOS</h2>
         <div className={styles.home__tallas}>
           {sizes.map((value, key)=>(
-            <BotonSimple changeSize={handleChangeSize} active={sizeSelected === value}>{value}</BotonSimple>
+            <BotonSimple key={key} changeSize={handleChangeSize} active={sizeSelected === value}>{value}</BotonSimple>
           ))}
             
         </div>
@@ -83,7 +101,8 @@ const Home = () => {
             imagen={producto.image[0]} 
             nombreProducto={producto.name}
             slug={producto.slug}
-            handleFavoritos={()=>funcionFavoritos(producto.id)} ></TarjetaHome>
+            handleFavoritos={()=>funcionFavoritos(producto.id)} 
+            id={producto.id}></TarjetaHome>
             </>
           ))
           

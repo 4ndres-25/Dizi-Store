@@ -16,6 +16,7 @@ export interface Vestido {
   image: string[];
   stock: number;
   materiales: string[];
-  mangas: string
+  mangas: string;
+  corte: string;
   slug: string;        
 }

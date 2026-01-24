@@ -11,14 +11,34 @@ type Props = {
     nombreProducto: string;
     slug: string;
     clase?: string
+    id?: number
     handleFavoritos?: () => void
     
 }
 
-function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos}: Props) { 
-    const [nombreUpercase, setNombreUpercase] = useState("")
+function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos, id=-1}: Props) { 
+    const [nombreUpercase, setNombreUpercase] = useState("")  
     const [click, setClick] = useState(false)
 
+    const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
+      const datosLS = localStorage.getItem("Favoritos");
+      if (!datosLS) return []; 
+      try {
+        return JSON.parse(datosLS); 
+      } catch {
+        return []; 
+      }
+    });
+    
+    useEffect(() => {
+      setClick(idFavoritos.includes(id))
+      
+    }, [])
+    
+    
+      
+    
+    
 
     useEffect(() => {
       setNombreUpercase(nombreProducto.toUpperCase())
@@ -26,6 +46,7 @@ function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos}: 
     }, [nombreProducto])
 
     const clickIcon = () =>{
+    
       setClick(!click)
     }
     

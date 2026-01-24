@@ -13,7 +13,7 @@
 }
 .productoSeleccionado__ContainerImagenPrincipal{
     width: 100%;
-    height: 80dvh;
+    height: 80vh;
 }
 .productoSeleccionado__ImagenPrincipal{
     width: 100%;
@@ -166,10 +166,9 @@
     gap: 20px;
     margin: 20px;
     
-    height: 450px;
+    height: 590px;
     transition: height 0.3s linear;
     
-
     
     
 }
