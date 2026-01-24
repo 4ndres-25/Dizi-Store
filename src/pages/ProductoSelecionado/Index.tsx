@@ -58,7 +58,7 @@ function ProductoSeleccionado({}: Props) {
     if(notificacionFavoritos){
       const timer = setTimeout(() => {
         setNotificacionFavoritos(false)
-      }, 5000);
+      }, 4000);
     return () => clearTimeout(timer);
     }
   
