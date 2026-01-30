@@ -81,7 +81,7 @@ function ProductoSeleccionado({}: Props) {
     console.log(datosProducto?.image)
 
     const handleWhatsapp = () => {
-        const mensaje = encodeURIComponent(`Hola!😊 Quiero el producto:\n${datosProducto?.name}\n Producto: http://localhost:5173/producto/${datosProducto?.slug}`);
+        const mensaje = encodeURIComponent(`Hola!😊 Quiero el producto:\n${datosProducto?.name}\n Producto: https:dizistore.pages.dev/producto/${datosProducto?.slug}`);
         window.open(`https://wa.me/59172234794?text=${mensaje}`, "_blank");
     }
     const showImage = (index : number , key : number) =>{
