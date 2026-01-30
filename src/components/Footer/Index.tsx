@@ -27,9 +27,9 @@ function Footer({}: Props) {
 
         </div>
         <div className={styles.footer__redes}>
-            <a href="https://wa.me/59172234794"><IoLogoWhatsapp className={styles.footer__icon}/></a>
-            <a href="https://www.tiktok.com/@dizistore.bol"><FaTiktok className={styles.footer__icon}/></a>
-            <a href="https://www.facebook.com/share/17j4H6Ln84/"><FaFacebook className={styles.footer__icon}/></a>
+            <a href="https://wa.me/59172234794" target="_blank"><IoLogoWhatsapp className={styles.footer__icon}/></a>
+            <a href="https://www.tiktok.com/@dizistore.bol" target="_blank"><FaTiktok className={styles.footer__icon}/></a>
+            <a href="https://www.facebook.com/share/17j4H6Ln84/" target="_blank"><FaFacebook className={styles.footer__icon}/></a>
         </div>
     </div>
   )

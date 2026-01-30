@@ -112,7 +112,7 @@ function ProductoSeleccionado({}: Props) {
         <Header></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
-        <h2 className={styles.productoSeleccionado__h2Disponible}>DISPONIBLE</h2>
+        <h3 className={styles.productoSeleccionado__h2Disponible}>{datosProducto?.estado==="Disponible"? "DISPONIBLE": "AGOTADO"}</h3>
         <div className={styles[`${modalState?"productoSeleccionado__modalImg":"productoSeleccionado__modalImg--off"}`]}>
             <IoMdCloseCircleOutline className={styles.modalImg__iconClose} onClick={openModalImg}/>
             <TransformWrapper

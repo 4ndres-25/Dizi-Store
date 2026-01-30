@@ -86,7 +86,7 @@ const Home = () => {
         
         <Header changeData={changeDataforSearch}></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
-        <h2 className={styles.home__h2}>VESTIDOS</h2>
+        <h1 className={styles.home__h2}>VESTIDOS</h1>
         <div className={styles.home__tallas}>
           {sizes.map((value, key)=>(
             <BotonSimple key={key} changeSize={handleChangeSize} active={sizeSelected === value}>{value}</BotonSimple>
