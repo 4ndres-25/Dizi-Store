@@ -660,7 +660,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 31,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -674,7 +674,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/H4Gjgx8.png","https://i.imgur.com/EdYjaJO.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -682,7 +682,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 32,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -696,7 +696,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/ISVIQMJ.png","https://i.imgur.com/8BHBOJp.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -704,7 +704,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 33,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -718,7 +718,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/CASaMn8.png","https://i.imgur.com/iwhdU3v.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -726,7 +726,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 34,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -740,7 +740,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/EJf8yZ1.png","https://i.imgur.com/cAmwKvW.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -748,7 +748,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 35,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -762,7 +762,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/xYwjHWF.png","https://i.imgur.com/zqkyvmG.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -770,7 +770,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 36,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -784,7 +784,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/UA1X4hw.png","https://i.imgur.com/zGC5uGk.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -792,7 +792,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 37,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -806,7 +806,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/TIY1Jgz.png","https://i.imgur.com/V4MKNQr.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -814,7 +814,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 38,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -828,7 +828,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/rIGuMLm.png","https://i.imgur.com/lnxbW9t.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -836,7 +836,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 39,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -850,7 +850,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/yBTqZ7X.png","https://i.imgur.com/MufYUuy.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -858,7 +858,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 40,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -872,7 +872,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/cMPNhYC.png","https://i.imgur.com/KCbge7i.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1100,7 +1100,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 51,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1114,7 +1114,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/CDdWiIH.png","https://i.imgur.com/LyoJepC.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1122,7 +1122,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 52,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1136,7 +1136,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/aeNDSjw.png","https://i.imgur.com/HlSY9It.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1144,7 +1144,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 53,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1158,7 +1158,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/qZGBkA6.png","https://i.imgur.com/OcTwoKJ.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1166,7 +1166,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 54,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1180,7 +1180,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/rwoz1Uq.png","https://i.imgur.com/pulXGbU.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1188,7 +1188,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 55,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1202,7 +1202,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/RbxtmIY.png","https://i.imgur.com/d8OlpZ7.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1210,7 +1210,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 56,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1224,7 +1224,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/7ZfQRYz.png","https://i.imgur.com/vaISYqh.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1232,7 +1232,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 57,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1246,7 +1246,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/quhaD9y.png",""],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1254,7 +1254,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 58,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1268,7 +1268,7 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/KfPpNaZ.png","https://i.imgur.com/iOERcxX.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
@@ -1276,7 +1276,7 @@
     "slug": "vestido-corto-rosa-pastel"
   },
   {
-    "id": 20,
+    "id": 59,
     "name": "Vestido Corto Rosa Pastel",
     "category": "vestidos",
     "estilo": "corto",
@@ -1290,7 +1290,29 @@
     "price": 210,
     "currency": "BOB",
     "tags": ["dia", "brunch", "casual"],
-    "image": ["https://i.imgur.com/w6WXdQc.png","https://i.imgur.com/x8z2b2t.png"],
+    "image": ["https://i.imgur.com/MqSdQbp.png","https://i.imgur.com/zkH69k8.png"],
+    "stock": 6,
+    "materiales": ["algodón"],
+    "mangas" : "Manga corta",
+    "corte": "Sirena",
+    "slug": "vestido-corto-rosa-pastel"
+  },
+  {
+    "id": 60,
+    "name": "Vestido Corto Rosa Pastel",
+    "category": "vestidos",
+    "estilo": "corto",
+    "descripcion": "Vestido dulce ideal para eventos de día y brunch.",
+    "color": "rosa",
+    "tono": "pastel",
+    "tipo_tela": "algodón",
+    "temporada": ["primavera"],
+    "tallas": ["XS", "S", "M"],
+    "estado": "Disponible",
+    "price": 210,
+    "currency": "BOB",
+    "tags": ["dia", "brunch", "casual"],
+    "image": ["https://i.imgur.com/O9Td6Wb.png","https://i.imgur.com/cHOZqIW.png"],
     "stock": 6,
     "materiales": ["algodón"],
     "mangas" : "Manga corta",
