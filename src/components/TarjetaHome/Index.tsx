@@ -58,7 +58,7 @@ function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos, i
         <div className={styles[clase?clase:"tarjetaHome__container"]}>
           <div className={styles["tarjetaHome__img-container"]}>
             <Link to={`/producto/${slug}`} className={styles["tarjetaHome__link-img"]}>
-              <img src={imagen} className={styles.tarjetaHome__img} alt="Vista previa imagen de Vestido" />
+              <img src={imagen} className={styles.tarjetaHome__img} alt="Vista previa imagen de Vestido" loading="lazy" />
             </Link>
               <button className={styles.tarjetaHome__like}>
                 {click? <FaHeart className={styles.tarjetaHome__iconOn} onClick={()=>{handleFavoritos?.(); clickIcon()}}/>:<FaRegHeart className={styles.tarjetaHome__icon}onClick={()=>{handleFavoritos?.(); clickIcon()}} />

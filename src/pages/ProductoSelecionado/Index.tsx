@@ -129,18 +129,18 @@ function ProductoSeleccionado({}: Props) {
                     height: "100%",
                 }}>
 
-                    <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" />
+                    <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" loading='lazy' />
                 </TransformComponent>
             </TransformWrapper>
         </div>
         <div className={styles.productoSeleccionado__ContainerImagenPrincipal}>
-             <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" onClick={openModalImg}/>
+             <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" onClick={openModalImg} loading='lazy'/>
         </div>
         <div className={styles.productoSeleccionado__otrasImagenes}>
             {datosProducto?.image.map((element, key)=>(
                 
                 <div key={key} className={styles.productoSeleccionado__ConImagenCarrusel}>
-                    <img className={`${styles["productoSeleccionado__ImagenCarrusel"]} ${animationImg===key? styles["productoSeleccionado__ImagenCarrusel--click"]: ""} ` } src={element} alt="" onClick={()=>showImage(datosProducto.image.indexOf(element), key)} />
+                    <img className={`${styles["productoSeleccionado__ImagenCarrusel"]} ${animationImg===key? styles["productoSeleccionado__ImagenCarrusel--click"]: ""} ` } src={element} alt="" onClick={()=>showImage(datosProducto.image.indexOf(element), key)} loading='lazy'/>
                 </div>
             )
             )}
