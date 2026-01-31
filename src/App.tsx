@@ -6,6 +6,7 @@ import PoliticaPrivacidad from './pages/PoliticaPrivacidad/Index'
 import TerminosCondiciones from './pages/TerminosCondiciones/Index'
 import Contacto from './pages/Contacto/Index'
 import SobreNosotros from './pages/SobreNosotros/Index'
+import ScrollToTop from './components/Scroll/Index'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+        <ScrollToTop/>
       <Routes>
         <Route path='/' element={<Home/>} ></Route>
         <Route path='/producto/:slug' element={<ProductoSeleccionado/>}></Route>

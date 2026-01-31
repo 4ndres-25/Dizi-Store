@@ -143,13 +143,17 @@ function Header ({changeData}: Props) {
     </header>
     <div className={styles[`${searchState}`]}>
 
-      <div className={styles.header__inputSearch}>
+      <form className={styles.header__inputSearch} onSubmit={(e) => {  
+           e.preventDefault()
+          handleSearchProduct()
+        }}
+>
 
             <input type="text" className={styles.search__input} onChange={(e)=>handleChangeSearch(e)}/>
-            <button className={styles.search__button} onClick={handleSearchProduct}>Buscar</button>
+            <button className={styles.search__button} type="submit">Buscar</button>
             <IoClose className={styles.header__closelogo} onClick={onClickSearch}/>
           
-      </div>
+      </form>
       <div className={`${styles["header__noMatches--off"]} ${noMatches ? styles["header__noMatches--on"]: ""} ${opacityNoMatches ? styles["header__noMatches--time"]: ""}`}>
           <label>No se encontraron coincidencias, intente con otra palabra</label>
       </div>

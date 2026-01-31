@@ -1,0 +1,26 @@
+.contacto__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.contacto__h1{
+    color: #C9A24D;
+}
+
+.contacto__tarjeta{
+    width: 90dvw;
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px;
+    padding: 10px;
+}
+
+.contacto__span{
+    font-weight: bolder;
+}
