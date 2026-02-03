@@ -5,9 +5,12 @@
 }
 .footer__container{
     display: flex;
+    width: 100dvw;
+    
     align-items: center;
     background-color: black;
     margin-top: 5px;
+    bottom: 1px;
     
 }
 .footer__referencia{

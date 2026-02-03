@@ -7,6 +7,8 @@ import vestidos from "../../data/vestidos.json";
 import { useEffect, useState } from "react"
 import Footer from "../../components/Footer/Index"
 import NotificacionFavoritos from "../../components/NotificacionFavoritos/Index"
+import daisy from "../../assets/Images/daisy.png"
+
 
 
 
@@ -17,6 +19,7 @@ const Home = () => {
   const [sizeSelected, setSizeSelected] = useState("")
   const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
   const [coincide, setCoincide] = useState<boolean>()
+  const [noHayTalla, setNoHayTalla] = useState(false)
 
   
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
@@ -59,6 +62,19 @@ const Home = () => {
     setData(vestidos)
     setHayBusqueda(vestidos)      
   }, [])
+
+  useEffect(() => {
+    if(data.length  === 0){
+      setNoHayTalla(true)
+        
+    }
+    else{
+      setNoHayTalla(false)
+    }
+  
+    
+  }, [data])
+  
   
   const changeDataforSearch = (newData: Vestido[]) => {  
     setHayBusqueda(newData)
@@ -74,15 +90,16 @@ const Home = () => {
     }else{
       setSizeSelected(talla)
       setData(hayBusqueda.filter(p => p.tallas.some(t => t === talla)))
+      
 
     }
 
     
     
   }
-  console.log(data)
+  console.log(noHayTalla)
   return (
-    <div className={styles.home__container}>
+    <div className={`${styles.home__container} ${noHayTalla ? styles["home__container--sinTallas"]: ""}`}>
         
         <Header changeData={changeDataforSearch}></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
@@ -110,11 +127,24 @@ const Home = () => {
 
 
         </div>
-        <div>
+        {noHayTalla === true &&
+
+        <div className={styles.home__noHayTallas}>
+          Lo sentimos, la talla que busca ya no está disponible.
+
+        </div>
+        }
+        <div className={`${styles.home__descripcion} ${noHayTalla ? styles["home__descripcion--sin"] : ""}`}>
+          <div className={styles.home__dizi}>
+
+            <img src={daisy} alt="Imagen de flor margarita" />
+            <h2>DIZI STORE</h2>
+            <img src={daisy} alt="Imagen de flor margarita" />
+          </div>
             <p>
-            ¡Bienvenidos a DIZI STORE! 🌸✨
             En nuestra tienda online encontrarás vestidos, tacones, maquillaje y más, pensados para que luzcas increíble en cada ocasión. Nos ubicamos en Cochabamba, Bolivia, y realizamos envíos a todos los departamentos y provincias del país, para que disfrutes de tus compras sin importar dónde estés. Calidad, estilo y comodidad al alcance de un clic.
             </p>
+          
         </div> 
         <Footer></Footer>
     </div>
