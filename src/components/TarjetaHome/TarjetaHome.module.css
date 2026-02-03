@@ -90,8 +90,13 @@
     display: flex;
     align-items: center;
     padding-left: 5px;
+    padding-right: 10px;
     height: 10%;
     width: 100%;
+}
+
+.tarjetaHome__p-container p{
+    padding: 0 10px 0 10px;  
     
 }
 
