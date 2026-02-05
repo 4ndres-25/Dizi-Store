@@ -174,7 +174,7 @@ function ProductoSeleccionado({}: Props) {
             <div className={`${stateInformation?styles.masInformacion__container:styles["masInformacion__container--off"]}`}>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
                     <div className={styles.masInformacion__containerIcon}><GiDress className={styles.masInformacion__icon}/></div> 
-                    <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.largo_del_vestido}</p>
+                    <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.largo_del_producto}</p>
                 </div>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
                     <div className={styles.masInformacion__containerIcon}><IoColorPalette className={styles.masInformacion__icon}/></div> 

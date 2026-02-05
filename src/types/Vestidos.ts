@@ -2,7 +2,7 @@ export interface Vestido {
   id: number;
   name: string;
   category: string;     
-  largo_del_vestido: string;       
+  largo_del_producto: string;       
   descripcion: string;
   color: string;        
   tono: string;         
