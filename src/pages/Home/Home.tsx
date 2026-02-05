@@ -74,14 +74,28 @@ const Home = () => {
   
     
   }, [data])
+
+  useEffect(() => {
+    console.log("Si useeffect")
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+  
+    
+  }, [data])
+  
   
   
   const changeDataforSearch = (newData: Vestido[]) => {  
     setHayBusqueda(newData)
     if (newData.length !== 0){
       setData(newData)      
+      
     }    
+      
   }
+  
 
   const handleChangeSize = (talla : string) =>{
     if(talla === "Todas las tallas"){
