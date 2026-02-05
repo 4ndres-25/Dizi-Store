@@ -36,12 +36,11 @@ function Header ({changeData}: Props) {
       changeData(dataFiltrado)
     }
     if(searchClicked){
+      
       if(dataFiltrado?.length === 0){
-        console.log("no coincidencias")
         setNoMatches(noMatches ? noMatches : !noMatches)
       }
       else{
-          console.log("SI COINCIDENCIAS")
           setNoMatches(false)
       }
 
@@ -64,8 +63,11 @@ function Header ({changeData}: Props) {
       }, 6000)
 
       // limpiar si el componente se desmonta o si activo cambia antes
-      return () => clearTimeout(timer);
-      return () => clearTimeout(timer2)
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2)
+      } 
+      
     }
     else{
       setOpacityNoMatches(false)
@@ -127,12 +129,15 @@ function Header ({changeData}: Props) {
  }
  /* console.log(`N matches: ${noMatches}`)
  console.log(dataFiltrado.length) */
+
+ 
   return (
     <>
     <header className={styles.header__container}>
-        <div className={styles.header__logo}>
-            <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />
-        </div>
+      <Link to={"/"} className={styles.header__logo}>        
+        <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />      
+      
+      </Link>
         <nav className={styles.header__nav}>
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
             <Link to={"/Favoritos"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
@@ -146,6 +151,8 @@ function Header ({changeData}: Props) {
       <form className={styles.header__inputSearch} onSubmit={(e) => {  
            e.preventDefault()
           handleSearchProduct()
+          
+
         }}
 >
 
