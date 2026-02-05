@@ -7,9 +7,15 @@ import TerminosCondiciones from './pages/TerminosCondiciones/Index'
 import Contacto from './pages/Contacto/Index'
 import SobreNosotros from './pages/SobreNosotros/Index'
 import ScrollToTop from './components/Scroll/Index'
+import LayoutConHeader from './components/LayoutConHeader/Index'
 import './App.css'
+import { useState } from 'react'
+import type {Vestido} from "./types/Vestidos"
+
 
 function App() {
+  const [dataFiltered, setDataFiltred] = useState<Vestido[]>([])
+
 
 
   return (
@@ -17,8 +23,11 @@ function App() {
     <BrowserRouter>
         <ScrollToTop/>
       <Routes>
-        <Route path='/' element={<Home/>} ></Route>
-        <Route path='/producto/:slug' element={<ProductoSeleccionado/>}></Route>
+
+        <Route element={<LayoutConHeader onSearch={setDataFiltred}/>} >
+          <Route path='/' element={<Home datosDesdeHeader={dataFiltered}/>} ></Route>
+          <Route path='/producto/:slug' element={<ProductoSeleccionado/>}></Route>
+        </Route>
         <Route path='/favoritos' element={<Favoritos/>}></Route>
         <Route path='/politica-de-privacidad' element={<PoliticaPrivacidad/>}></Route>
         <Route path='/sobre-nosotros' element={<SobreNosotros/>}></Route>
