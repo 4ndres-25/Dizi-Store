@@ -78,6 +78,13 @@ function ProductoSeleccionado({}: Props) {
         })
       
     }, [slug])
+
+    useEffect(() => {
+      
+        setIndexImg(0)
+      
+    }, [datosProducto])
+    
     console.log(datosProducto?.image)
 
     const handleWhatsapp = () => {
@@ -163,7 +170,7 @@ function ProductoSeleccionado({}: Props) {
             <div className={`${stateInformation?styles.masInformacion__container:styles["masInformacion__container--off"]}`}>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
                     <div className={styles.masInformacion__containerIcon}><GiDress className={styles.masInformacion__icon}/></div> 
-                    <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.estilo}</p>
+                    <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.largo_del_vestido}</p>
                 </div>
                 <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
                     <div className={styles.masInformacion__containerIcon}><IoColorPalette className={styles.masInformacion__icon}/></div> 
@@ -185,10 +192,7 @@ function ProductoSeleccionado({}: Props) {
                     <div className={styles.masInformacion__containerIcon}><GiForearm className={styles.masInformacion__icon}/></div> 
                     <p className={styles.masInformacion__p}><strong>Mangas:</strong>  {datosProducto?.mangas}</p>
                 </div>
-                <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                    <div className={styles.masInformacion__containerIcon}><MdOutlineWbSunny className={styles.masInformacion__icon}/></div> 
-                    <p className={styles.masInformacion__p}><strong>Temporada:</strong>  {datosProducto?.temporada?.join(", ")}</p>
-                </div>
+            
                 
             </div>
         </div>
