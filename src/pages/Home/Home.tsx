@@ -1,6 +1,5 @@
 import BotonSimple from "../../components/BotonSimple/Index"
 import styles from './Home.module.css'
-import Header from "../../components/Header/Index"
 import TarjetaHome from "../../components/TarjetaHome/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
@@ -10,9 +9,11 @@ import NotificacionFavoritos from "../../components/NotificacionFavoritos/Index"
 import daisy from "../../assets/Images/daisy.png"
 
 
+type Props = {
+  datosDesdeHeader: Vestido[];
+}
 
-
-const Home = () => {
+const Home = ( {datosDesdeHeader}:Props) => {
   const [data, setData] = useState<Vestido[]>([])
   const sizes = ["Todas las tallas","XXS","XS","S","M","L","XL","XXL"]
   const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
@@ -74,14 +75,32 @@ const Home = () => {
   
     
   }, [data])
+
+  useEffect(() => {
+    console.log("Si useeffect")
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+  
+    
+  }, [data])
+  
+  useEffect(() => {
+  
+    setHayBusqueda(datosDesdeHeader)
+    if (datosDesdeHeader.length !== 0){
+      setData(datosDesdeHeader)
+      setSizeSelected("Todas las tallas")      
+      
+    } 
+  
+    
+  }, [datosDesdeHeader])
+  
+  //esta es la que recibia los datos del header
   
   
-  const changeDataforSearch = (newData: Vestido[]) => {  
-    setHayBusqueda(newData)
-    if (newData.length !== 0){
-      setData(newData)      
-    }    
-  }
 
   const handleChangeSize = (talla : string) =>{
     if(talla === "Todas las tallas"){
@@ -101,7 +120,6 @@ const Home = () => {
   return (
     <div className={`${styles.home__container} ${noHayTalla ? styles["home__container--sinTallas"]: ""}`}>
         
-        <Header changeData={changeDataforSearch}></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.home__h2}>VESTIDOS</h1>
         <div className={styles.home__tallas}>

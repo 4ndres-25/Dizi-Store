@@ -8,10 +8,11 @@ import { useEffect, useState} from "react";
 import Menu from "../../components/Menu/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
-  changeData?: (newData: Vestido[]) => void
+  changeData?: (dataFiltered : Vestido[]) => void
 }
  
 function Header ({changeData}: Props) {
@@ -30,18 +31,19 @@ function Header ({changeData}: Props) {
    let f: any[]= []
    let final: any[] = []
    const [mostrar, setMostrar] = useState<Vestido[]>([]);//ojo copiar del otro
+   const navigate = useNavigate()
    /* const dataFiltrado: Vestido[] = [] */
    useEffect(() => {
-    if(changeData){
-      changeData(dataFiltrado)
+    if(dataFiltrado?.length !== 0){
+      changeData?.(dataFiltrado)
+      navigate("/")
     }
     if(searchClicked){
+      
       if(dataFiltrado?.length === 0){
-        console.log("no coincidencias")
         setNoMatches(noMatches ? noMatches : !noMatches)
       }
       else{
-          console.log("SI COINCIDENCIAS")
           setNoMatches(false)
       }
 
@@ -64,8 +66,11 @@ function Header ({changeData}: Props) {
       }, 6000)
 
       // limpiar si el componente se desmonta o si activo cambia antes
-      return () => clearTimeout(timer);
-      return () => clearTimeout(timer2)
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2)
+      } 
+      
     }
     else{
       setOpacityNoMatches(false)
@@ -123,16 +128,20 @@ function Header ({changeData}: Props) {
   //aqui poner el resultado final
    /* setDataFiltrado(mostrar) */
    setSearchClicked(true)
+  
      
  }
  /* console.log(`N matches: ${noMatches}`)
  console.log(dataFiltrado.length) */
+
+ 
   return (
     <>
     <header className={styles.header__container}>
-        <div className={styles.header__logo}>
-            <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />
-        </div>
+      <Link to={"/"} className={styles.header__logo}>        
+        <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />      
+      
+      </Link>
         <nav className={styles.header__nav}>
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
             <Link to={"/Favoritos"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
@@ -143,13 +152,16 @@ function Header ({changeData}: Props) {
     </header>
     <div className={styles[`${searchState}`]}>
 
-      <form className={styles.header__inputSearch} onSubmit={(e) => {  
+      <form className={styles.header__inputSearch} autoComplete="off" onSubmit={(e) => { 
+         
            e.preventDefault()
           handleSearchProduct()
+          
+
         }}
 >
 
-            <input type="text" className={styles.search__input} onChange={(e)=>handleChangeSearch(e)}/>
+            <input type="text" className={styles.search__input} autoComplete="off" inputMode="search" onChange={(e)=>handleChangeSearch(e)}/>
             <button className={styles.search__button} type="submit">Buscar</button>
             <IoClose className={styles.header__closelogo} onClick={onClickSearch}/>
           

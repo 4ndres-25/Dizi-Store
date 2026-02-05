@@ -7,7 +7,6 @@ import TarjetaHome from '../../components/TarjetaHome/Index'
 import { ImWhatsapp } from "react-icons/im";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRef } from "react";
-import Header from '../../components/Header/Index'
 import Footer from '../../components/Footer/Index'
 import { GiDress } from "react-icons/gi";
 import { IoColorPalette } from "react-icons/io5";
@@ -116,7 +115,6 @@ function ProductoSeleccionado({}: Props) {
   return (
 
     <div className={styles.productoSeleccionado}>
-        <Header></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
         <h3 className={styles.productoSeleccionado__h2Disponible}>{datosProducto?.estado==="Disponible"? "DISPONIBLE": "AGOTADO"}</h3>
