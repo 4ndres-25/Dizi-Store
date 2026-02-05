@@ -77,7 +77,6 @@ const Home = ( {datosDesdeHeader}:Props) => {
   }, [data])
 
   useEffect(() => {
-    console.log("Si useeffect")
     window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -87,9 +86,10 @@ const Home = ( {datosDesdeHeader}:Props) => {
   }, [data])
   
   useEffect(() => {
-  
-    setHayBusqueda(datosDesdeHeader)
+    
+    
     if (datosDesdeHeader.length !== 0){
+      setHayBusqueda(datosDesdeHeader)
       setData(datosDesdeHeader)
       setSizeSelected("Todas las tallas")      
       
@@ -116,7 +116,8 @@ const Home = ( {datosDesdeHeader}:Props) => {
     
     
   }
-  console.log(noHayTalla)
+
+  
   return (
     <div className={`${styles.home__container} ${noHayTalla ? styles["home__container--sinTallas"]: ""}`}>
         
@@ -130,7 +131,7 @@ const Home = ( {datosDesdeHeader}:Props) => {
         </div>
         <div className={styles["home__cards-container"]}>
           {data.map((producto, key)=>(
-            <>
+            
             <TarjetaHome
             key={key} 
             imagen={producto.image[0]} 
@@ -138,7 +139,7 @@ const Home = ( {datosDesdeHeader}:Props) => {
             slug={producto.slug}
             handleFavoritos={()=>funcionFavoritos(producto.id)} 
             id={producto.id}></TarjetaHome>
-            </>
+            
           ))
           
           }
