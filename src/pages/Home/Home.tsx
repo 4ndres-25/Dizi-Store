@@ -90,7 +90,8 @@ const Home = () => {
   const changeDataforSearch = (newData: Vestido[]) => {  
     setHayBusqueda(newData)
     if (newData.length !== 0){
-      setData(newData)      
+      setData(newData)
+      setSizeSelected("Todas las tallas")      
       
     }    
       
