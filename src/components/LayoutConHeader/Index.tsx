@@ -1,7 +1,7 @@
 import Header from "../Header/Index"
 import { Outlet } from "react-router-dom"
 import type { Vestido } from "../../types/Vestidos"
-
+import styles from "./LayoutConHeader.module.css"
 type Props = {
     onSearch: (dataFiltered : Vestido[]) => void
 }
@@ -9,8 +9,10 @@ type Props = {
 function LayoutConHeader({onSearch}: Props) {
   return (
     <>
-      <Header changeData={onSearch}/>
+        <Header changeData={onSearch}/>
       <Outlet />
+
+    
     </>
   )
 }

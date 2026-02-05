@@ -37,6 +37,7 @@ function ProductoSeleccionado({}: Props) {
     const [stateInformation, setstateInformation] = useState(false)
     const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
     const [coincide, setCoincide] = useState<boolean>()
+    const [tallas, setTallas] = useState("")
 
     const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
@@ -75,12 +76,14 @@ function ProductoSeleccionado({}: Props) {
                 setDatosProducto(element)
             }
         })
+        
       
     }, [slug])
 
     useEffect(() => {
       
         setIndexImg(0)
+        setTallas(datosProducto?.tallas.join("-")?datosProducto?.tallas.join(" - "):"")
       
     }, [datosProducto])
     
@@ -117,7 +120,10 @@ function ProductoSeleccionado({}: Props) {
     <div className={styles.productoSeleccionado}>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
-        <h3 className={styles.productoSeleccionado__h2Disponible}>{datosProducto?.estado==="Disponible"? "DISPONIBLE": "AGOTADO"}</h3>
+        <div className={styles.productoSeleccionado__filaH3}>
+            <h3 className={styles.productoSeleccionado__tallas}> Tallas: {tallas} </h3>
+            <h3 className={styles.productoSeleccionado__h2Disponible}>{datosProducto?.estado==="Disponible"? "DISPONIBLE": "AGOTADO"}</h3>
+        </div>
         <div className={styles[`${modalState?"productoSeleccionado__modalImg":"productoSeleccionado__modalImg--off"}`]}>
             <IoMdCloseCircleOutline className={styles.modalImg__iconClose} onClick={openModalImg}/>
             <TransformWrapper
