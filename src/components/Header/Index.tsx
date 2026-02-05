@@ -8,10 +8,11 @@ import { useEffect, useState} from "react";
 import Menu from "../../components/Menu/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
-  changeData?: (newData: Vestido[]) => void
+  changeData?: (dataFiltered : Vestido[]) => void
 }
  
 function Header ({changeData}: Props) {
@@ -30,10 +31,12 @@ function Header ({changeData}: Props) {
    let f: any[]= []
    let final: any[] = []
    const [mostrar, setMostrar] = useState<Vestido[]>([]);//ojo copiar del otro
+   const navigate = useNavigate()
    /* const dataFiltrado: Vestido[] = [] */
    useEffect(() => {
-    if(changeData){
-      changeData(dataFiltrado)
+    if(dataFiltrado?.length !== 0){
+      changeData?.(dataFiltrado)
+      navigate("/")
     }
     if(searchClicked){
       
@@ -125,6 +128,7 @@ function Header ({changeData}: Props) {
   //aqui poner el resultado final
    /* setDataFiltrado(mostrar) */
    setSearchClicked(true)
+  
      
  }
  /* console.log(`N matches: ${noMatches}`)
@@ -148,7 +152,8 @@ function Header ({changeData}: Props) {
     </header>
     <div className={styles[`${searchState}`]}>
 
-      <form className={styles.header__inputSearch} onSubmit={(e) => {  
+      <form className={styles.header__inputSearch} autoComplete="off" onSubmit={(e) => { 
+         
            e.preventDefault()
           handleSearchProduct()
           
@@ -156,7 +161,7 @@ function Header ({changeData}: Props) {
         }}
 >
 
-            <input type="text" className={styles.search__input} onChange={(e)=>handleChangeSearch(e)}/>
+            <input type="text" className={styles.search__input} autoComplete="off" inputMode="search" onChange={(e)=>handleChangeSearch(e)}/>
             <button className={styles.search__button} type="submit">Buscar</button>
             <IoClose className={styles.header__closelogo} onClick={onClickSearch}/>
           
