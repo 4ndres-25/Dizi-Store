@@ -77,7 +77,6 @@ const Home = ( {datosDesdeHeader}:Props) => {
   }, [data])
 
   useEffect(() => {
-    console.log("Si useeffect")
     window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -87,9 +86,10 @@ const Home = ( {datosDesdeHeader}:Props) => {
   }, [data])
   
   useEffect(() => {
-  
-    setHayBusqueda(datosDesdeHeader)
+    
+    
     if (datosDesdeHeader.length !== 0){
+      setHayBusqueda(datosDesdeHeader)
       setData(datosDesdeHeader)
       setSizeSelected("Todas las tallas")      
       
@@ -116,7 +116,9 @@ const Home = ( {datosDesdeHeader}:Props) => {
     
     
   }
-  console.log(noHayTalla)
+
+  console.log(hayBusqueda)
+  
   return (
     <div className={`${styles.home__container} ${noHayTalla ? styles["home__container--sinTallas"]: ""}`}>
         
