@@ -134,9 +134,10 @@ function Header ({changeData}: Props) {
   return (
     <>
     <header className={styles.header__container}>
-        <div className={styles.header__logo}>
-            <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />
-        </div>
+      <Link to={"/"} className={styles.header__logo}>        
+        <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />      
+      
+      </Link>
         <nav className={styles.header__nav}>
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
             <Link to={"/Favoritos"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
