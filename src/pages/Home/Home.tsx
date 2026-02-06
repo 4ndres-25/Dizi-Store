@@ -98,7 +98,7 @@ const Home = ( {datosDesdeHeader}:Props) => {
     
   }, [datosDesdeHeader])
   
-  //esta es la que recibia los datos del header
+  
   
   
 
