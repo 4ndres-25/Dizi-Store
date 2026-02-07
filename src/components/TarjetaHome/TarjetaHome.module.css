@@ -51,7 +51,9 @@
     height: 100%;
     width: 100%;    
     object-fit: contain;
-   
+    filter: drop-shadow(
+        -7px 4px 4px rgb(135, 135, 135)
+    );
     mask-image: linear-gradient(
         transparent,
         black 10%
