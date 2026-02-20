@@ -20,6 +20,7 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
   const [data, setData] = useState<Vestido[]>([])
   const sizes = ["Todas las tallas","XXS","XS","S","M","L","XL","XXL"]
   const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
+  const [todosLosDatos, setTodosLosDatos] = useState<Vestido[]>([])
   const [sizeSelected, setSizeSelected] = useState("")
   const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
   const [coincide, setCoincide] = useState<boolean>()
@@ -86,10 +87,10 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
   //funcion para buscar producto
   const handleSearchProduct = () =>{
   setDataFiltrado([])
-  hayBusqueda.map((value,key)=>{
+  todosLosDatos.map((value,key)=>{
       nuevo = inputValue.filter(e => value.tags.includes(e))
-      
 
+      
       objeto1.push( {
         id: value.id,
         r: nuevo.length, 
@@ -114,7 +115,7 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
       })
 
       final.map((value)=>{
-        const encontrado = hayBusqueda.find(s => s.id === value.id )
+        const encontrado = todosLosDatos.find(s => s.id === value.id )
         if(encontrado){
           setDataFiltrado(prev => [...prev,encontrado])
         }
@@ -142,9 +143,18 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
     setNoEncontro(true)
    }
    else{
+    setData(dataFiltrado)
     setNoEncontro(false)
    }
-   setData(dataFiltrado)
+
+
+   if (dataFiltrado.length !== 0){
+      setHayBusqueda(dataFiltrado)
+      setSizeSelected("Todas las tallas")      
+      
+    } 
+   
+    //TIMEOUT ----------------------------------
    const timer2 = setTimeout(() => {
         console.log("entra el timer del HOME")
         setNoEncontro(false)
@@ -159,7 +169,7 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
 
   useEffect(() => {
     setData(vestidos)
-    setHayBusqueda(vestidos)      
+    setTodosLosDatos(vestidos)        
   }, [])
 
   useEffect(() => {
@@ -183,17 +193,6 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
     
   }, [data])
   
-  useEffect(() => {
-    
-    
-    if (datosDesdeHeader.length !== 0){
-      setHayBusqueda(datosDesdeHeader)
-      setSizeSelected("Todas las tallas")      
-      
-    } 
-  
-    
-  }, [datosDesdeHeader])
 
   useEffect(() => {
     if (!params.toString()) return
