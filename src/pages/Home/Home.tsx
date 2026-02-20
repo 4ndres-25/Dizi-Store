@@ -7,13 +7,16 @@ import { useEffect, useState } from "react"
 import Footer from "../../components/Footer/Index"
 import NotificacionFavoritos from "../../components/NotificacionFavoritos/Index"
 import daisy from "../../assets/Images/daisy.png"
+import { useSearchParams } from "react-router-dom"
 
 
 type Props = {
   datosDesdeHeader: Vestido[];
+  setNoEncontro: (resultado: boolean) => void
+  setSearchClicked: (clicked: boolean) => void
 }
 
-const Home = ( {datosDesdeHeader}:Props) => {
+const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
   const [data, setData] = useState<Vestido[]>([])
   const sizes = ["Todas las tallas","XXS","XS","S","M","L","XL","XXL"]
   const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
@@ -21,6 +24,20 @@ const Home = ( {datosDesdeHeader}:Props) => {
   const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
   const [coincide, setCoincide] = useState<boolean>()
   const [noHayTalla, setNoHayTalla] = useState(false)
+  const [params, setParams] = useSearchParams()
+  const [dataFiltrado, setDataFiltrado] = useState<Vestido[]>([])
+  const [inputValue, setInputValue] = useState<string[]>([])
+  const [clickBusqueda, setClickBusqueda] = useState(false)
+
+
+  let nuevo:string[] = []
+  let objeto1 = [{id: 0, r: 0}]
+  let arrayNum :number[] = []
+  let arraySinRepetidos : number[]= []
+  let f: any[]= []
+  let final: any[] = []
+
+
 
   
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
@@ -57,7 +74,88 @@ const Home = ( {datosDesdeHeader}:Props) => {
     setNotificacionFavoritos(true)
     
   }
+  const resetHomeState = () => {
+    setData(vestidos)
+    setHayBusqueda(vestidos)
+    setSizeSelected("Todas la tallas")
+    setNoHayTalla(false)
+
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  //funcion para buscar producto
+  const handleSearchProduct = () =>{
+  setDataFiltrado([])
+  hayBusqueda.map((value,key)=>{
+      nuevo = inputValue.filter(e => value.tags.includes(e))
+      
+
+      objeto1.push( {
+        id: value.id,
+        r: nuevo.length, 
+      })
+      if(nuevo.length > 0){
+        arrayNum.push(nuevo.length)
+
+      }
+    
+    })
+    arrayNum.sort((a,b)=>b-a)
+    arraySinRepetidos = [...new Set(arrayNum)]
+
+    
+      
+    arraySinRepetidos.map(value => {
+      f = objeto1.filter(e => e.r === value)
+      f.map((df)=>{
+        final.push(df)
+      })
+        
+      })
+
+      final.map((value)=>{
+        const encontrado = hayBusqueda.find(s => s.id === value.id )
+        if(encontrado){
+          setDataFiltrado(prev => [...prev,encontrado])
+        }
+      })
+      
+
+
+
+  //aqui poner el resultado final
+   /* setDataFiltrado(mostrar) */
+   //es paraaaaaaaaaaaaaaaaaaaaa el mensaje si no encuentra ninguna coincidenciaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+   setClickBusqueda(true)
+   setSearchClicked(true) 
   
+     
+ }
+  
+ useEffect(() => {
+  if(inputValue.length === 0) return
+   handleSearchProduct()
+ }, [inputValue])
+
+ useEffect(() => {
+   if(dataFiltrado.length === 0 && clickBusqueda){
+    setNoEncontro(true)
+   }
+   else{
+    setNoEncontro(false)
+   }
+   setData(dataFiltrado)
+   const timer2 = setTimeout(() => {
+        console.log("entra el timer del HOME")
+        setNoEncontro(false)
+
+    }, 6000)
+    return () => {
+      clearTimeout(timer2)
+    } 
+ }, [dataFiltrado])
+ 
+ 
 
   useEffect(() => {
     setData(vestidos)
@@ -90,13 +188,28 @@ const Home = ( {datosDesdeHeader}:Props) => {
     
     if (datosDesdeHeader.length !== 0){
       setHayBusqueda(datosDesdeHeader)
-      setData(datosDesdeHeader)
       setSizeSelected("Todas las tallas")      
       
     } 
   
     
   }, [datosDesdeHeader])
+
+  useEffect(() => {
+    if (!params.toString()) return
+    if (params.get("reset") === "true") {
+      resetHomeState()
+      setParams({}, { replace: true }) // limpia la URL
+    }
+    
+    const search = params.get("search")
+    if (search){
+      setInputValue(search.split(" "))
+      setParams({}, { replace: true })
+
+    
+    }
+  }, [params])
   
   
   
@@ -116,6 +229,8 @@ const Home = ( {datosDesdeHeader}:Props) => {
     
     
   }
+
+  
 
   
   return (

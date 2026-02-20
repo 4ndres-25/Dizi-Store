@@ -8,18 +8,19 @@ import { useEffect, useState} from "react";
 import Menu from "../../components/Menu/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 
 type Props = {
-  changeData?: (dataFiltered : Vestido[]) => void
+  changeData?: (dataFiltered : Vestido[]) => void;
+  noEncontro: boolean
+  searchClicked: boolean
 }
  
-function Header ({changeData}: Props) {
+function Header ({changeData, noEncontro, searchClicked}: Props) {
    const [searchState, setSearchState] = useState("header__search--off")
-   const [inputValue, setInputValue] = useState<string[]>([])
+   const [inputValue, setInputValue] = useState<string>()
    const [noMatches, setNoMatches] = useState(false)
-   const [searchClicked, setSearchClicked] = useState(false)
    const [opacityNoMatches, setOpacityNoMatches] = useState(false)
    const [dataFiltrado, setDataFiltrado] = useState<Vestido[]>([])
    const data: Vestido[] = vestidos;
@@ -32,15 +33,14 @@ function Header ({changeData}: Props) {
    let final: any[] = []
    const [mostrar, setMostrar] = useState<Vestido[]>([]);//ojo copiar del otro
    const navigate = useNavigate()
+   const location = useLocation()
    /* const dataFiltrado: Vestido[] = [] */
    useEffect(() => {
-    if(dataFiltrado?.length !== 0){
-      changeData?.(dataFiltrado)
-      navigate("/")
-    }
+    
     if(searchClicked){
       
-      if(dataFiltrado?.length === 0){
+      console.log("si entra al if")
+      if(noEncontro === true){
         setNoMatches(noMatches ? noMatches : !noMatches)
       }
       else{
@@ -49,7 +49,7 @@ function Header ({changeData}: Props) {
 
     }
         
-   }, [dataFiltrado])
+   }, [noEncontro])
 
    
    
@@ -61,6 +61,7 @@ function Header ({changeData}: Props) {
       }, 5000);
       
       const timer2 = setTimeout(() => {
+        console.log("entra el timer")
         setNoMatches(false)
 
       }, 6000)
@@ -84,64 +85,31 @@ function Header ({changeData}: Props) {
  }
  const handleChangeSearch = (e : React.ChangeEvent<HTMLInputElement>) => {
     const newE = e.target.value.toLowerCase()
-    setInputValue(newE.split(" "))
+    setInputValue(newE)
  }
  
- const handleSearchProduct = () =>{
-  setDataFiltrado([])
-  data.map((value,key)=>{
-      nuevo = inputValue.filter(e => value.tags.includes(e))
-      
-
-      objeto1.push( {
-        id: value.id,
-        r: nuevo.length, 
-      })
-      if(nuevo.length > 0){
-        arrayNum.push(nuevo.length)
-
-      }
-    
-    })
-    arrayNum.sort((a,b)=>b-a)
-    arraySinRepetidos = [...new Set(arrayNum)]
-
-    
-      
-    arraySinRepetidos.map(value => {
-      f = objeto1.filter(e => e.r === value)
-      f.map((df)=>{
-        final.push(df)
-      })
-        
-      })
-
-      final.map((value)=>{
-        const encontrado = data.find(s => s.id === value.id )
-        if(encontrado){
-          setDataFiltrado(prev => [...prev,encontrado])
-        }
-      })
-
-
-
-  //aqui poner el resultado final
-   /* setDataFiltrado(mostrar) */
-   setSearchClicked(true)
-  
-     
- }
+ 
  /* console.log(`N matches: ${noMatches}`)
  console.log(dataFiltrado.length) */
 
- 
+ const handleLogoClick = () => {
+  if (location.pathname === "/") {
+    // Ya estás en Home → solo reset
+    navigate("/?reset=true", { replace: true })
+  } else {
+    // Vienes desde otra ruta → ir a Home
+    navigate("/?reset=true")
+  }
+}
+  console.log(`noEncontro: ${noEncontro}`)
+ console.log(`noMatches: ${noMatches}`)
   return (
     <>
     <header className={styles.header__container}>
-      <Link to={"/"} className={styles.header__logo}>        
+      <div className={styles.header__logo} onClick={handleLogoClick}>        
         <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />      
       
-      </Link>
+      </div>
         <nav className={styles.header__nav}>
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
             <Link to={"/Favoritos"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
@@ -155,8 +123,7 @@ function Header ({changeData}: Props) {
       <form className={styles.header__inputSearch} autoComplete="off" onSubmit={(e) => { 
          
            e.preventDefault()
-          handleSearchProduct()
-          
+           navigate(`/?search=${inputValue}`)
 
         }}
 >
