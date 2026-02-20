@@ -28,8 +28,8 @@ function App() {
         <Route element={<LayoutConHeader onSearch={setDataFiltred} noEncontro={noEncontro} searchClicked={searchClicked}/>} >
           <Route path='/' element={<Home datosDesdeHeader={dataFiltered} setNoEncontro={setNoEncontro} setSearchClicked={setSearchClicked}/>} ></Route>
           <Route path='/producto/:slug' element={<ProductoSeleccionado/>}></Route>
+          <Route path='/favoritos' element={<Favoritos/>}></Route>
         </Route>
-        <Route path='/favoritos' element={<Favoritos/>}></Route>
         <Route path='/politica-de-privacidad' element={<PoliticaPrivacidad/>}></Route>
         <Route path='/sobre-nosotros' element={<SobreNosotros/>}></Route>
         <Route path='/terminos-y-condiciones' element={<TerminosCondiciones/>}></Route>
