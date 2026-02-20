@@ -5,6 +5,7 @@ import TarjetaHome from '../../components/TarjetaHome/Index';
 import { useState, useEffect } from 'react';
 import styles from './Favoritos.module.css'
 import NotificacionFavoritos from '../../components/NotificacionFavoritos/Index';
+import imagenFavVacio from '../../assets/Images/bolsa-de-mano.png'
 
 type Props = {}
 
@@ -60,6 +61,14 @@ function Favoritos({}: Props) {
         <Header></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.favoritos__h1}>TUS FAVORITOS</h1>
+          {idFavoritos.length===0&&
+        <div className={styles.favorito__pVacio}>
+          <>
+          <img className={styles.favortios__img} src={imagenFavVacio} alt="No tiene ningun producto añadido a la lista de Favoritos" />
+          <p >AÚN NO TIENE NINGÚN PRODUCTO EN TU LISTA DE FAVORITOS</p>
+          </>
+        </div>
+        }
         <div className={styles.favorito__elemento}>
           {datosVestidos.map((item, index: number) => (
           <>

@@ -4,10 +4,24 @@
 }
 .favoritos__h1{
     margin: 85px 10px 10px 10px;
+    color: #C9A24D;
 }
 .favorito__elemento{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
+}
+.favortios__img{
+    width: 180px;
+    height: 180px;
+}
+.favorito__pVacio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 70vh;
+    flex-direction: column;
+    font-weight: bold;
 }
