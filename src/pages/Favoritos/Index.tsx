@@ -58,7 +58,6 @@ function Favoritos({}: Props) {
   return (
     <>
       <div className={styles.favoritos__contenedor}>
-        <Header></Header>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.favoritos__h1}>TUS FAVORITOS</h1>
           {idFavoritos.length===0&&

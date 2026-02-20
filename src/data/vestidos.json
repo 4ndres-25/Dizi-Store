@@ -1257,7 +1257,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido-3/4-de-seda-fria-palo-de-rosa"
+    "slug": "Vestido-34-de-seda-fria-palo-de-rosa"
   },
   {
     "id": 61,
@@ -1509,7 +1509,7 @@
     "materiales": ["Piedras"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido-de-piedras-3/4"
+    "slug": "Vestido-de-piedras-34"
   },
   {
     "id": 73,
@@ -1551,7 +1551,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido-3/4-con-glitter-y-abertura"
+    "slug": "Vestido-34-con-glitter-y-abertura"
   },
   {
     "id": 75,
@@ -1824,7 +1824,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Campana",
-    "slug": "Vestido-3/4-café-de-satin-con-un-solo-hombro"
+    "slug": "Vestido-34-café-de-satin-con-un-solo-hombro"
   },
   {
     "id": 88,
@@ -1845,7 +1845,7 @@
     "materiales": ["Tiras no regulables"],
     "mangas" : "Sin mangas",
     "corte": "Semi Campana",
-    "slug": "Vestido-3/4-de-seda-fria-color-negro"
+    "slug": "Vestido-34-de-seda-fria-color-negro"
   },
   {
     "id": 89,
@@ -1908,7 +1908,7 @@
     "materiales": ["plumas","cierre"],
     "mangas" : "Larga",
     "corte": "Recto",
-    "slug": "Vestido-3/4-negro-con-mangas"
+    "slug": "Vestido-34-negro-con-mangas"
   },
   {
     "id": 92,
@@ -1929,7 +1929,7 @@
     "materiales": ["Licra"],
     "mangas" : "Corta",
     "corte": "Irregular",
-    "slug": "Vestido-3/4-terracota"
+    "slug": "Vestido-34-terracota"
   },
   {
     "id": 93,
@@ -2076,7 +2076,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Irregular",
-    "slug": "Vestido-3/4-negro-con-holan-en-un-costado"
+    "slug": "Vestido-34-negro-con-holan-en-un-costado"
   },
   {
     "id": 100,
@@ -2264,7 +2264,7 @@
     "materiales": ["Glitter"],
     "mangas" : "Corta",
     "corte": "Recto",
-    "slug": "Vestido corto de glitter con mangas cortas"
+    "slug": "Vestido-corto-de-glitter-con-mangas-cortas"
   },
   {
     "id": 109,
@@ -2285,7 +2285,7 @@
     "materiales": ["Forro"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido corto blanco  de satin strapless"
+    "slug": "Vestido-corto-blanco-de-satin-strapless"
   },
   {
     "id": 110,
@@ -2306,7 +2306,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido de lentejuelas tornazoladas"
+    "slug": "Vestido-de-lentejuelas-tornazoladas"
   },
   {
     "id": 111,
@@ -2327,7 +2327,7 @@
     "materiales": ["Tiras regulables"],
     "mangas" : "Sin mangas",
     "corte": "Sirena",
-    "slug": "Vestido largo corte sirena con abertura adelate"
+    "slug": "Vestido-largo-corte-sirena-con-abertura-adelate"
   },
   {
     "id": 112,
@@ -2348,7 +2348,7 @@
     "materiales": ["Capa"],
     "mangas" : "Sin mangas",
     "corte": "Irregular",
-    "slug": "Vestido largo con capa a un costado"
+    "slug": "Vestido-largo-con-capa-a-un-costado"
   },
   {
     "id": 112,
@@ -2369,7 +2369,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Irregular",
-    "slug": "Vestido 3/4 negro streapless con arruchado"
+    "slug": "Vestido-34-negro-streapless-con-arruchado"
   },
   {
     "id": 113,
@@ -2390,7 +2390,7 @@
     "materiales": ["Glitter"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido corto de glitter rojo"
+    "slug": "Vestido-corto-de-glitter-rojo"
   },
   {
     "id": 114,
@@ -2411,7 +2411,7 @@
     "materiales": ["Corset"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido largo terracota tubo de hilo"
+    "slug": "Vestido-largo-terracota-tubo-de-hilo"
   },
   {
     "id": 115,
@@ -2432,7 +2432,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Corta",
     "corte": "Recto",
-    "slug": "Top de encaje guindo con glitter"
+    "slug": "Top-de-encaje-guindo-con-glitter"
   },
   {
     "id": 116,
@@ -2453,7 +2453,7 @@
     "materiales": ["Lazo"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido semilargo floreado negro con malva con nudo en cuello"
+    "slug": "Vestido-semilargo-floreado-negro-con-malva-con-nudo-en-cuello"
   },
   {
     "id": 117,
@@ -2474,7 +2474,7 @@
     "materiales": ["Liga"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido corto rosa bebé a rayas delgadas"
+    "slug": "Vestido-corto-rosa-bebé-a-rayas-delgadas"
   },
   {
     "id": 118,
@@ -2495,7 +2495,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Enterizo corto color marfíl con lentejuelas"
+    "slug": "Enterizo-corto-color-marfíl-con-lentejuelas"
   },
   {
     "id": 119,
@@ -2516,7 +2516,7 @@
     "materiales": ["Forro"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido corto blanco de satin strapless"
+    "slug": "Vestido-corto-blanco-de-satin-strapless"
   },
   {
     "id": 120,
@@ -2537,7 +2537,7 @@
     "materiales": ["LIga"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido corto amarillo con licra en torso"
+    "slug": "Vestido-corto-amarillo-con-licra-en-torso"
   },
   {
     "id": 121,
@@ -2558,7 +2558,7 @@
     "materiales": ["Corset"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido corto naranja de lentejuelas"
+    "slug": "Vestido-corto-naranja-de-lentejuelas"
   },
   {
     "id": 122,
@@ -2579,7 +2579,7 @@
     "materiales": ["Corset"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Top negro con encaje "
+    "slug": "Top-negro-con-encaje "
   },
   {
     "id": 123,
@@ -2600,7 +2600,7 @@
     "materiales": ["Corset"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Top verde agua"
+    "slug": "Top-verde-agua"
   },
   {
     "id": 124,
@@ -2621,7 +2621,7 @@
     "materiales": ["Broche"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido de cuerina guindo"
+    "slug": "Vestido-de-cuerina-guindo"
   },
   {
     "id": 125,
@@ -2642,7 +2642,7 @@
     "materiales": ["Corset"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido corto negro con abertura en cinturas"
+    "slug": "Vestido-corto-negro-con-abertura-en-cinturas"
   },
   {
     "id": 126,
@@ -2663,7 +2663,7 @@
     "materiales": ["Corset"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido 3/4 de lentejuelas verdes"
+    "slug": "Vestido-34-de-lentejuelas-verdes"
   },
   {
     "id": 127,
@@ -2684,7 +2684,7 @@
     "materiales": ["Cierre"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido corto verde y negro con flores"
+    "slug": "Vestido-corto-verde-y-negro-con-flores"
   },
   {
     "id": 128,
@@ -2705,7 +2705,7 @@
     "materiales": ["Encaje"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido corto blanco de encaje con arruchado "
+    "slug": "Vestido-corto-blanco-de-encaje-con-arruchado "
   },
   {
     "id": 129,
@@ -2726,7 +2726,7 @@
     "materiales": ["Tiras no regulables"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido verde 3/4 con abertura y escote en abdomen"
+    "slug": "Vestido-verde-34-con-abertura-y-escote-en-abdomen"
   },
   {
     "id": 130,
@@ -2747,7 +2747,7 @@
     "materiales": ["Encaje","Cancán"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido largo de glitter lila pomposo"
+    "slug": "Vestido-largo-de-glitter-lila-pomposo"
   },
   {
     "id": 131,
@@ -2768,7 +2768,7 @@
     "materiales": ["Tiras no regulables"],
     "mangas" : "Sin mangas",
     "corte": "Recto",
-    "slug": "Vestido largo de satín con escote en el abdomen"
+    "slug": "Vestido-largo-de-satín-con-escote-en-el-abdomen"
   },
   {
     "id": 132,
@@ -2789,7 +2789,7 @@
     "materiales": ["Encaje"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido negro corto de encaje"
+    "slug": "Vestido-negro-corto-de-encaje"
   },
   {
     "id": 133,
@@ -2810,7 +2810,7 @@
     "materiales": ["Tiras regulables"],
     "mangas" : "Sin mangas",
     "corte": "A",
-    "slug": "Vestido largo celeste de glitter corte A con abertura"
+    "slug": "Vestido-largo-celeste-de-glitter-corte-A-con-abertura"
   },
   {
     "id": 134,
@@ -2831,7 +2831,7 @@
     "materiales": ["Glitter"],
     "mangas" : "Larga",
     "corte": "Recto",
-    "slug": "Vestido corto de glitter con mangas largas "
+    "slug": "Vestido-corto-de-glitter-con-mangas-largas "
   },
   {
     "id": 135,
