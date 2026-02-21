@@ -19,7 +19,7 @@
 .home__tallas{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center;    
     gap: 5px;
     margin-bottom: 8px;
     
@@ -35,7 +35,7 @@
     height: fit-content;
     text-align: center;
     background-color: rgb(255, 207, 207);
-    color: red;
+    color: rgb(166, 38, 38);
     border: 1px solid red;
 }
 

@@ -39,7 +39,6 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
     
     if(searchClicked){
       
-      console.log("si entra al if")
       if(noEncontro === true){
         setNoMatches(noMatches ? noMatches : !noMatches)
       }
@@ -61,7 +60,6 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
       }, 5000);
       
       const timer2 = setTimeout(() => {
-        console.log("entra el timer")
         setNoMatches(false)
 
       }, 6000)
@@ -107,8 +105,6 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
 const inputRef = useRef<HTMLInputElement>(null);
 
 
-  console.log(`noEncontro: ${noEncontro}`)
- console.log(`noMatches: ${noMatches}`)
   return (
     <>
     <header className={styles.header__container}>
