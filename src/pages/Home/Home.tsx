@@ -169,7 +169,8 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
 
   useEffect(() => {
     setData(vestidos)
-    setTodosLosDatos(vestidos)        
+    setTodosLosDatos(vestidos)
+    setHayBusqueda(vestidos)       
   }, [])
 
   useEffect(() => {
