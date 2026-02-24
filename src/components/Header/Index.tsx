@@ -4,7 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import Logo from '../../assets/Images/dizi.jpg'
 import styles from './Header.module.css'
 import { IoClose } from "react-icons/io5";
-import { useEffect, useState} from "react";
+import { useEffect, useRef, useState} from "react";
 import Menu from "../../components/Menu/Index"
 import type {Vestido} from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
@@ -39,7 +39,6 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
     
     if(searchClicked){
       
-      console.log("si entra al if")
       if(noEncontro === true){
         setNoMatches(noMatches ? noMatches : !noMatches)
       }
@@ -61,7 +60,6 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
       }, 5000);
       
       const timer2 = setTimeout(() => {
-        console.log("entra el timer")
         setNoMatches(false)
 
       }, 6000)
@@ -82,6 +80,7 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
  const onClickSearch = () =>{
     
     setSearchState(searchState==="header__search--off"?"header__search":"header__search--off")
+    inputRef.current?.focus()       
  }
  const handleChangeSearch = (e : React.ChangeEvent<HTMLInputElement>) => {
     const newE = e.target.value.toLowerCase()
@@ -101,8 +100,11 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
     navigate("/?reset=true")
   }
 }
-  console.log(`noEncontro: ${noEncontro}`)
- console.log(`noMatches: ${noMatches}`)
+
+
+const inputRef = useRef<HTMLInputElement>(null);
+
+
   return (
     <>
     <header className={styles.header__container}>
@@ -128,7 +130,7 @@ function Header ({changeData, noEncontro, searchClicked}: Props) {
         }}
 >
 
-            <input type="text" className={styles.search__input} autoComplete="off" inputMode="search" onChange={(e)=>handleChangeSearch(e)}/>
+            <input ref={inputRef} type="text" className={styles.search__input} autoComplete="off" inputMode="search" onChange={(e)=>handleChangeSearch(e)}/>
             <button className={styles.search__button} type="submit">Buscar</button>
             <IoClose className={styles.header__closelogo} onClick={onClickSearch}/>
           

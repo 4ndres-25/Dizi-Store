@@ -76,6 +76,8 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
     
   }
   const resetHomeState = () => {
+
+    console.log("SE she esta ejecutando")
     setData(vestidos)
     setHayBusqueda(vestidos)
     setSizeSelected("Todas la tallas")
@@ -155,8 +157,7 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
     } 
    
     //TIMEOUT ----------------------------------
-   const timer2 = setTimeout(() => {
-        console.log("entra el timer del HOME")
+   const timer2 = setTimeout(() => {  
         setNoEncontro(false)
 
     }, 6000)
@@ -169,7 +170,8 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
 
   useEffect(() => {
     setData(vestidos)
-    setTodosLosDatos(vestidos)        
+    setTodosLosDatos(vestidos)
+    setHayBusqueda(vestidos)       
   }, [])
 
   useEffect(() => {
@@ -204,7 +206,7 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
     const search = params.get("search")
     if (search){
       setInputValue(search.split(" "))
-      setParams({}, { replace: true })
+
 
     
     }
@@ -263,7 +265,7 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
         {noHayTalla === true &&
 
         <div className={styles.home__noHayTallas}>
-          Lo sentimos, la talla que busca ya no está disponible.
+          Ups, por el momento esta talla no está disponible. Puedes probar con otra.
 
         </div>
         }
