@@ -76,13 +76,10 @@ const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
     
   }
   const resetHomeState = () => {
-
-    console.log("SE she esta ejecutando")
     setData(vestidos)
     setHayBusqueda(vestidos)
     setSizeSelected("Todas la tallas")
     setNoHayTalla(false)
-
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
