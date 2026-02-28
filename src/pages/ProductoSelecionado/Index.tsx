@@ -115,6 +115,55 @@ function ProductoSeleccionado({}: Props) {
     setstateInformation(!stateInformation)
   }
 
+  let nuevo:string[] = []
+  let objeto1 = [{id: 0, r: 0}]
+  let arrayNum :number[] = []
+  let arraySinRepetidos : number[]= []
+  let f: any[]= []
+  let final: any[] = []
+    const [dataFiltrado, setDataFiltrado] = useState<Vestido[]>([])
+
+
+
+  useEffect(() => {
+    data.map((value,key)=>{
+      nuevo = datosProducto?.tags?.filter(e => value.tags.includes(e)) ?? []
+
+      
+      objeto1.push( {
+        id: value.id,
+        r: nuevo.length, 
+      })
+      if(nuevo.length > 0){
+        arrayNum.push(nuevo.length)
+
+      }
+    
+    })
+    arrayNum.sort((a,b)=>b-a)
+    arraySinRepetidos = [...new Set(arrayNum)]
+
+    
+      
+    arraySinRepetidos.map(value => {
+      f = objeto1.filter(e => e.r === value)
+      f.map((df)=>{
+        final.push(df)
+      })
+        
+      })
+
+      final.map((value)=>{
+        const encontrado = data.find(s => s.id === value.id )
+        if(encontrado){
+          setDataFiltrado(prev => [...prev,encontrado])
+        }
+      })
+  
+    
+  }, [datosProducto])
+  
+  
   return (
 
     <div className={styles.productoSeleccionado}>
@@ -203,7 +252,7 @@ function ProductoSeleccionado({}: Props) {
         <h3 className={styles.productoSeleccionado__h3ProductoRelacionado}>PRODUCTOS RELACIONADOS</h3>
         <div className={styles.carrusel__container}>
             {
-            data.map((element, key)=>(
+            dataFiltrado.map((element, key)=>(
                 
                 <div>
                 { element.tags.some(item=> datosProducto?.tags.includes(item))?(
