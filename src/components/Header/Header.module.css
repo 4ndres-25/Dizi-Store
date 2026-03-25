@@ -7,13 +7,16 @@
     align-items: center;
     border-bottom: 1px solid rgb(122, 121, 121);
     z-index: 50;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     top: 0;
+    padding-left: 10px;
+    box-sizing: border-box;
 }
 .header__logo{
     width: 40px;
     height: 100%;
+    cursor: pointer;
 }
 .logo__img{
     
@@ -29,8 +32,12 @@
     
 
 }
+
 .header__searchlogo{
     font-size: 30px;
+}
+.header__searchlogo--desktop{
+    font-size: 30px;    
 }
 .header__Favoritologo{
     display: flex;
@@ -56,11 +63,10 @@
 .search__input{
     border: none;
     width: 85%;
-    height: 25px;
-    margin: 0 5px;
-    padding: 0 ;
+    height: 33px;    
     outline: none;
-    
+    background-color: rgb(255, 255, 255);
+    padding: 0 10px;
 }
 .header__closelogo{
     font-size: 35px;
@@ -79,7 +85,6 @@
     top: 34px;
     transition: top 0.2s linear;
     box-sizing: border-box;
-    
 }
 .search__button{
     background-color: rgb(0, 0, 0);
@@ -93,7 +98,8 @@
 .header__inputSearch{
     display: flex;
     align-items: center;
-    background-color: white;
+    height: 35px;
+    
     border: solid 1px black;
     width: 100%;    
     box-sizing: border-box;
@@ -119,3 +125,37 @@
 .header__noMatches--time{
     opacity: 0;
 }
+
+
+
+
+
+.header__search-desktop{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.header__input-desktop{
+    width: 400px;
+    height: 25px;
+    border-radius: 20px;
+    padding: 0 10px 0 10px
+}
+.header__button-search-desktop{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+@media (min-width: 1020px){
+    .header__searchlogo{
+        display: none;
+    }
+    .header__container{
+        padding-right: 10px;
+    }
+    .header__search-desktop{
+        display: flex;
+    }
+}
+

@@ -6,9 +6,17 @@
     width: 20%;
     height: 45px;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .button--selected{
     background-color: black;
     color: white;
+}
+
+@media (min-width: 1020px){
+    .button{
+    width: 8%;
+    
+}
 }

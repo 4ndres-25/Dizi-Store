@@ -115,6 +115,13 @@
     text-overflow: ellipsis;       
 }
 
+@media (min-width: 1020px){
+    .tarjetaHome__container{
+        width: 25%;
+        height: 36.5dvw;
+    }
+}
+
 
 
 

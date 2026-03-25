@@ -108,3 +108,9 @@
   }
 
 }
+
+@media (min-width: 1020px){
+    .home__tallas{
+        gap: 10px
+    }
+}
