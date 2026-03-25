@@ -112,7 +112,27 @@ const inputRef = useRef<HTMLInputElement>(null);
         <img className={styles.logo__img} src={Logo} alt="Logo Dizi Store" />      
       
       </div>
-        <nav className={styles.header__nav}>
+
+       <nav className={styles.header__nav}>
+            
+            <form className={styles["header__search-desktop"]} action="" onSubmit={(e) => { 
+                              e.preventDefault()
+                              navigate(`/?search=${inputValue}`)
+                            }}>
+            <button type="submit" className={styles["header__button-search-desktop"]}> 
+
+            <IoSearch className={styles["header__searchlogo--desktop"]} type="submit"/>
+            </button>
+
+              <input 
+                type="text"
+                className={styles["header__input-desktop"]} 
+                placeholder="Buscar un producto" 
+                onChange={(e)=>handleChangeSearch(e)}
+              />
+            </form>
+
+            
             <IoSearch className={styles.header__searchlogo} onClick={()=>onClickSearch()}/>
             <Link to={"/Favoritos"} className={styles.header__Favoritologo}><FaRegHeart /></Link>
             <Menu></Menu>

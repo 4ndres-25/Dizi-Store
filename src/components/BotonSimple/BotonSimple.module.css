@@ -6,6 +6,7 @@
     width: 20%;
     height: 45px;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .button--selected{
