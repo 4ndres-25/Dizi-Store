@@ -46,6 +46,7 @@
     font-size: 30px;
     position: absolute;
     right: 0;
+    cursor: pointer;
 }
 
 .menu__h2{
@@ -122,4 +123,14 @@
 .menu__redIconTiktok{
     font-size: 25px;
     color: #000000;
+}
+
+
+@media (min-width: 1020px) {
+ .menu__main-container--off{
+    width: 30vw;
+ }      
+ .menu__iconClose{
+    padding-right: 15px;
+ }
 }
