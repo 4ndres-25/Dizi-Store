@@ -12,3 +12,10 @@
     background-color: black;
     color: white;
 }
+
+@media (min-width: 1020px){
+    .button{
+    width: 8%;
+    
+}
+}
