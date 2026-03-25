@@ -45,3 +45,13 @@
     color: white;
 }
 
+
+
+
+/* Responsive*/
+
+@media (min-width: 1300px) {
+    .footer__referencia{
+        flex-direction: row;
+    }
+}
