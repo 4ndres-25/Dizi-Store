@@ -12,7 +12,7 @@ type Props = {
     slug: string;
     clase?: string
     id?: number
-    handleFavoritos?: () => void
+    handleFavoritos?: (id: number) => void
     
 }
 
@@ -31,6 +31,9 @@ function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos, i
     });
     
     useEffect(() => {
+      console.log("si se ejecuta el use effect")
+      console.log(id)
+      console.log(idFavoritos.includes(id))
       setClick(idFavoritos.includes(id))
       
     }, [])
@@ -61,7 +64,9 @@ function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos, i
               <img src={imagen} className={styles.tarjetaHome__img} alt="Vista previa imagen de Vestido" loading="lazy" />
             </Link>
               <button className={styles.tarjetaHome__like}>
-                {click? <FaHeart className={styles.tarjetaHome__iconOn} onClick={()=>{handleFavoritos?.(); clickIcon()}}/>:<FaRegHeart className={styles.tarjetaHome__icon}onClick={()=>{handleFavoritos?.(); clickIcon()}} />
+                {click?
+                 <FaHeart className={styles.tarjetaHome__iconOn} onClick={()=>{handleFavoritos?.(id); clickIcon()}}/>
+                :<FaRegHeart className={styles.tarjetaHome__icon}onClick={()=>{handleFavoritos?.(id); clickIcon()}} />
               } 
                 
                </button>

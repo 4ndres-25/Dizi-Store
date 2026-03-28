@@ -1,14 +1,13 @@
 import BotonSimple from "../../components/BotonSimple/Index"
 import styles from './Home.module.css'
 import TarjetaHome from "../../components/TarjetaHome/Index"
-import type {Vestido} from "../../types/Vestidos"
+import type { Vestido } from "../../types/Vestidos"
 import vestidos from "../../data/vestidos.json";
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import Footer from "../../components/Footer/Index"
 import NotificacionFavoritos from "../../components/NotificacionFavoritos/Index"
 import daisy from "../../assets/Images/daisy.png"
 import { useSearchParams } from "react-router-dom"
-
 
 type Props = {
   datosDesdeHeader: Vestido[];
@@ -16,269 +15,161 @@ type Props = {
   setSearchClicked: (clicked: boolean) => void
 }
 
-const Home = ( {datosDesdeHeader, setNoEncontro, setSearchClicked}:Props) => {
-  const [data, setData] = useState<Vestido[]>([])
-  const sizes = ["Todas las tallas","XXS","XS","S","M","L","XL","XXL"]
-  const [hayBusqueda, setHayBusqueda] = useState<Vestido[]>([])
-  const [todosLosDatos, setTodosLosDatos] = useState<Vestido[]>([])
-  const [sizeSelected, setSizeSelected] = useState("")
-  const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
-  const [coincide, setCoincide] = useState<boolean>()
-  const [noHayTalla, setNoHayTalla] = useState(false)
+const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
   const [params, setParams] = useSearchParams()
-  const [dataFiltrado, setDataFiltrado] = useState<Vestido[]>([])
-  const [inputValue, setInputValue] = useState<string[]>([])
-  const [clickBusqueda, setClickBusqueda] = useState(false)
-
-
-  let nuevo:string[] = []
-  let objeto1 = [{id: 0, r: 0}]
-  let arrayNum :number[] = []
-  let arraySinRepetidos : number[]= []
-  let f: any[]= []
-  let final: any[] = []
-
-
-
+  const sizes = ["Todas las tallas", "XXS", "XS", "S", "M", "L", "XL", "XXL"]
   
+  // 1. ESTADOS ESENCIALES
+  const [sizeSelected, setSizeSelected] = useState("Todas las tallas")
+  const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
+  const [coincide, setCoincide] = useState<boolean>(false)
+  
+  // Extraemos la búsqueda actual de la URL
+  const searchQuery = params.get("search") || "";
+
+  // 2. SINCRONIZACIÓN DE ESTADO DURANTE EL RENDER (Evita Render Cascada)
+  // Guardamos la búsqueda anterior para saber cuándo el usuario escribió algo nuevo
+  const [prevSearchQuery, setPrevSearchQuery] = useState(searchQuery);
+
+  if (searchQuery !== prevSearchQuery) {
+    // Si la búsqueda cambió, reseteamos la talla y actualizamos la marca de "anterior"
+    setPrevSearchQuery(searchQuery);
+    setSizeSelected("Todas las tallas");
+    // Al hacer esto aquí, React reinicia el renderizado internamente con los nuevos valores
+  }
+
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
     const datosLS = localStorage.getItem("Favoritos");
-    if (!datosLS) return []; 
-    try {
-      return JSON.parse(datosLS); 
-    } catch {
-      return []; 
-    }
+    return datosLS ? JSON.parse(datosLS) : [];
   });
 
-  useEffect(() => {
-    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))   
-  }, [idFavoritos])
-  
-  useEffect(() => {
-    if(notificacionFavoritos){
-      const timer = setTimeout(() => {
-        setNotificacionFavoritos(false)
-      }, 4000);
-    return () => clearTimeout(timer);
-    }
-  
+  // 3. LÓGICA DE FILTRADO (Memoizada para máximo rendimiento)
+  const dataFinal = useMemo(() => {
+    let resultado = vestidos;
+
+    // Filtro por palabras clave (Búsqueda)
+    const keywords = searchQuery.toLowerCase().split(" ").filter(k => k !== "");
     
-  }, [notificacionFavoritos])
-  
-
-  const funcionFavoritos = (id : number) =>{
-    setCoincide(idFavoritos.includes(id)?false:true)
-    if(id){
-      setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
-    }
-    setNotificacionFavoritos(true)
-    
-  }
-  const resetHomeState = () => {
-    setData(vestidos)
-    setHayBusqueda(vestidos)
-    setSizeSelected("Todas la tallas")
-    setNoHayTalla(false)
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
-  //funcion para buscar producto
-  const handleSearchProduct = () =>{
-  setDataFiltrado([])
-  todosLosDatos.map((value,key)=>{
-      nuevo = inputValue.filter(e => value.tags.includes(e))
-
-      
-      objeto1.push( {
-        id: value.id,
-        r: nuevo.length, 
+    if (keywords.length > 0) {
+      resultado = vestidos.map(vestido => {
+        const coincidencias = keywords.filter(kw => 
+          vestido.tags.some(tag => tag.toLowerCase().includes(kw))
+        ).length;
+        return { vestido, coincidencias };
       })
-      if(nuevo.length > 0){
-        arrayNum.push(nuevo.length)
+      .filter(item => item.coincidencias > 0) 
+      .sort((a, b) => b.coincidencias - a.coincidencias) 
+      .map(item => item.vestido); 
+    }
 
+    // Filtro por talla (Solo si no es "Todas")
+    if (sizeSelected !== "Todas las tallas") {
+      resultado = resultado.filter(p => p.tallas.includes(sizeSelected));
+    }
+
+    return resultado;
+  }, [searchQuery, sizeSelected]);
+
+  // 4. VALORES DERIVADOS (Variables simples, no estados)
+  const noHayResultados = dataFinal.length === 0;
+
+  // 5. EFECTOS PARA COMUNICACIÓN EXTERNA (Padre, LocalStorage, Timers)
+  
+  // Informar al Header/Padre sobre el estado de la búsqueda
+  useEffect(() => {
+    if (searchQuery !== "") {
+      setSearchClicked(true);
+      setNoEncontro(noHayResultados);
+      
+      if (noHayResultados) {
+        const timer = setTimeout(() => setNoEncontro(false), 6000);
+        return () => clearTimeout(timer);
       }
-    
-    })
-    arrayNum.sort((a,b)=>b-a)
-    arraySinRepetidos = [...new Set(arrayNum)]
-
-    
-      
-    arraySinRepetidos.map(value => {
-      f = objeto1.filter(e => e.r === value)
-      f.map((df)=>{
-        final.push(df)
-      })
-        
-      })
-
-      final.map((value)=>{
-        const encontrado = todosLosDatos.find(s => s.id === value.id )
-        if(encontrado){
-          setDataFiltrado(prev => [...prev,encontrado])
-        }
-      })
-      
-
-
-
-  //aqui poner el resultado final
-   /* setDataFiltrado(mostrar) */
-   //es paraaaaaaaaaaaaaaaaaaaaa el mensaje si no encuentra ninguna coincidenciaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-   setClickBusqueda(true)
-   setSearchClicked(true) 
-  
-     
- }
-  
- useEffect(() => {
-  if(inputValue.length === 0) return
-   handleSearchProduct()
- }, [inputValue])
-
- useEffect(() => {
-   if(dataFiltrado.length === 0 && clickBusqueda){
-    setNoEncontro(true)
-   }
-   else{
-    setData(dataFiltrado)
-    setNoEncontro(false)
-   }
-
-
-   if (dataFiltrado.length !== 0){
-      setHayBusqueda(dataFiltrado)
-      setSizeSelected("Todas las tallas")      
-      
-    } 
-   
-    //TIMEOUT ----------------------------------
-   const timer2 = setTimeout(() => {  
-        setNoEncontro(false)
-
-    }, 6000)
-    return () => {
-      clearTimeout(timer2)
-    } 
- }, [dataFiltrado])
- 
- 
-
-  useEffect(() => {
-    setData(vestidos)
-    setTodosLosDatos(vestidos)
-    setHayBusqueda(vestidos)       
-  }, [])
-
-  useEffect(() => {
-    if(data.length  === 0){
-      setNoHayTalla(true)
-        
+    } else {
+      setNoEncontro(false);
     }
-    else{
-      setNoHayTalla(false)
-    }
-  
-    
-  }, [data])
+  }, [searchQuery, noHayResultados, setNoEncontro, setSearchClicked]);
 
+  // Manejar el reset manual (botón de limpiar filtros si existiera)
   useEffect(() => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
-  
-    
-  }, [data])
-  
-
-  useEffect(() => {
-    if (!params.toString()) return
     if (params.get("reset") === "true") {
-      resetHomeState()
-      setParams({}, { replace: true }) // limpia la URL
+      setSizeSelected("Todas las tallas");
+      setParams({}, { replace: true });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    
-    const search = params.get("search")
-    if (search){
-      setInputValue(search.split(" "))
+  }, [params, setParams]);
 
+  // Persistencia de Favoritos
+  useEffect(() => {
+    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos));
+  }, [idFavoritos]);
 
-    
+  // Timer de la notificación
+  useEffect(() => {
+    if (notificacionFavoritos) {
+      const timer = setTimeout(() => setNotificacionFavoritos(false), 4000);
+      return () => clearTimeout(timer);
     }
-  }, [params])
-  
-  
-  
-  
+  }, [notificacionFavoritos]);
 
-  const handleChangeSize = (talla : string) =>{
-    if(talla === "Todas las tallas"){
-      setSizeSelected(talla)
-      setData(hayBusqueda)
-    }else{
-      setSizeSelected(talla)
-      setData(hayBusqueda.filter(p => p.tallas.some(t => t === talla)))
-      
+  const funcionFavoritos = (id: number) => {
+    const yaEsFavorito = idFavoritos.includes(id);
+    setCoincide(!yaEsFavorito);
+    setidFavoritos(prev => 
+      yaEsFavorito ? prev.filter(favid => favid !== id) : [...prev, id]
+    );
+    setNotificacionFavoritos(true);
+  };
 
-    }
-
-    
-    
-  }
-
-  
-
-  
   return (
-    <div className={`${styles.home__container} ${noHayTalla ? styles["home__container--sinTallas"]: ""}`}>
-        
-        <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
-        <h1 className={styles.home__h2}>VESTIDOS</h1>
-        <div className={styles.home__tallas}>
-          {sizes.map((value, key)=>(
-            <BotonSimple key={key} changeSize={handleChangeSize} active={sizeSelected === value}>{value}</BotonSimple>
-          ))}
-            
-        </div>
-        <div className={styles["home__cards-container"]}>
-          {data.map((producto, key)=>(
-            
-            <TarjetaHome
-            key={key} 
-            imagen={producto.image[0]} 
+    <div className={`${styles.home__container} ${noHayResultados ? styles["home__container--sinTallas"] : ""}`}>
+      <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide} />
+      
+      <h1 className={styles.home__h2}>VESTIDOS</h1>
+      
+      <div className={styles.home__tallas}>
+        {sizes.map((talla) => (
+          <BotonSimple 
+            key={talla} 
+            changeSize={() => setSizeSelected(talla)} 
+            active={sizeSelected === talla}
+          >
+            {talla}
+          </BotonSimple>
+        ))}
+      </div>
+
+      <div className={styles["home__cards-container"]}>
+        {dataFinal.map((producto) => (
+          <TarjetaHome
+            key={producto.id}
+            imagen={producto.image[0]}
             nombreProducto={producto.name}
             slug={producto.slug}
-            handleFavoritos={()=>funcionFavoritos(producto.id)} 
-            id={producto.id}></TarjetaHome>
-            
-          ))
-          
-          }
+            handleFavoritos={funcionFavoritos}
+            id={producto.id}
+          />
+        ))}
+      </div>
 
-
-        </div>
-        {noHayTalla === true &&
-
+      {noHayResultados && (
         <div className={styles.home__noHayTallas}>
-          Ups, por el momento esta talla no está disponible. Puedes probar con otra.
-
+          Ups, por el momento no hay coincidencias. Puedes probar con otra búsqueda o talla.
         </div>
-        }
-        <div className={`${styles.home__descripcion} ${noHayTalla ? styles["home__descripcion--sin"] : ""}`}>
-          <div className={styles.home__dizi}>
+      )}
 
-            <img src={daisy} alt="Imagen de flor margarita" />
-            <h2>DIZI STORE</h2>
-            <img src={daisy} alt="Imagen de flor margarita" />
-          </div>
-            <p>
-            En nuestra tienda online encontrarás vestidos, tacones, maquillaje y más, pensados para que luzcas increíble en cada ocasión. Nos ubicamos en Cochabamba, Bolivia, y realizamos envíos a todos los departamentos y provincias del país, para que disfrutes de tus compras sin importar dónde estés. Calidad, estilo y comodidad al alcance de un clic.
-            </p>
-          
-        </div> 
-        <Footer></Footer>
+      <div className={`${styles.home__descripcion} ${noHayResultados ? styles["home__descripcion--sin"] : ""}`}>
+        <div className={styles.home__dizi}>
+          <img src={daisy} alt="Imagen de flor margarita" />
+          <h2>DIZI STORE</h2>
+          <img src={daisy} alt="Imagen de flor margarita" />
+        </div>
+        <p>
+          En nuestra tienda online encontrarás vestidos, tacones, maquillaje y más... 
+          Ubicados en Cochabamba, realizamos envíos a toda Bolivia.
+        </p>
+      </div>
+      <Footer />
     </div>
   )
 }
