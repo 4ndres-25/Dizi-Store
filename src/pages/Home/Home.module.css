@@ -21,8 +21,57 @@
     flex-wrap: wrap;
     justify-content: center;    
     gap: 5px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     
+}
+
+/* Estilos profesionales y muy visibles para la Paginación */
+.home__paginacionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px auto;
+    padding: 12px 20px;
+    background-color: #faf9f6;
+    border: 2px solid #C9A24D;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(201, 162, 77, 0.2);
+    width: fit-content;
+    max-width: 90%;
+}
+
+.home__paginacionBoton {
+    background-color: #C9A24D;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.home__paginacionBoton:hover:not(:disabled) {
+    background-color: #b58e3e;
+    transform: scale(1.03);
+}
+
+.home__paginacionBoton:disabled {
+    background-color: #e0d0b0;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.home__paginacionTexto {
+    font-size: 16px;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 5px;
 }
 
 .home__cards-container{
@@ -37,6 +86,8 @@
     background-color: rgb(255, 207, 207);
     color: rgb(166, 38, 38);
     border: 1px solid red;
+    padding: 15px;
+    font-weight: bold;
 }
 
 .home__descripcion{
@@ -62,8 +113,6 @@
     animation: daisy 5s infinite linear;
     height: 35px;
     width: 35px;
-        
-
 }
 
 @keyframes daisy{
@@ -73,17 +122,14 @@
     to{
         transform: rotate(360deg)
     }
-
 }
 
 .home__dizi h2{
-   
   background: linear-gradient(
     270deg,
     #C9A24D,
     #98B39F,
     #F5BE54
-    
   );
   background-size: 600% 600%;
   animation: gradientMove 7s ease infinite;
@@ -106,7 +152,6 @@
   100% {
     background-position: 0% 50%;
   }
-
 }
 
 @media (min-width: 1020px){
