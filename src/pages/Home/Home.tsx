@@ -15,27 +15,27 @@ type Props = {
   setSearchClicked: (clicked: boolean) => void
 }
 
+const ITEMS_POR_PAGINA = 16; // 16 productos por página para una cuadrícula perfecta de 4x4
+
 const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
   const [params, setParams] = useSearchParams()
   const sizes = ["Todas las tallas", "XXS", "XS", "S", "M", "L", "XL", "XXL"]
   
-  // 1. ESTADOS ESENCIALES
   const [sizeSelected, setSizeSelected] = useState("Todas las tallas")
   const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
   const [coincide, setCoincide] = useState<boolean>(false)
   
-  // Extraemos la búsqueda actual de la URL
+  const paginaActual = Number(params.get("page")) || 1;
   const searchQuery = params.get("search") || "";
-
-  // 2. SINCRONIZACIÓN DE ESTADO DURANTE EL RENDER (Evita Render Cascada)
-  // Guardamos la búsqueda anterior para saber cuándo el usuario escribió algo nuevo
+  
   const [prevSearchQuery, setPrevSearchQuery] = useState(searchQuery);
 
   if (searchQuery !== prevSearchQuery) {
-    // Si la búsqueda cambió, reseteamos la talla y actualizamos la marca de "anterior"
     setPrevSearchQuery(searchQuery);
     setSizeSelected("Todas las tallas");
-    // Al hacer esto aquí, React reinicia el renderizado internamente con los nuevos valores
+    const newParams = new URLSearchParams(params);
+    newParams.delete("page");
+    setParams(newParams, { replace: true });
   }
 
   const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
@@ -43,11 +43,9 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
     return datosLS ? JSON.parse(datosLS) : [];
   });
 
-  // 3. LÓGICA DE FILTRADO (Memoizada para máximo rendimiento)
   const dataFinal = useMemo(() => {
     let resultado = vestidos;
 
-    // Filtro por palabras clave (Búsqueda)
     const keywords = searchQuery.toLowerCase().split(" ").filter(k => k !== "");
     
     if (keywords.length > 0) {
@@ -62,7 +60,6 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
       .map(item => item.vestido); 
     }
 
-    // Filtro por talla (Solo si no es "Todas")
     if (sizeSelected !== "Todas las tallas") {
       resultado = resultado.filter(p => p.tallas.includes(sizeSelected));
     }
@@ -70,12 +67,15 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
     return resultado;
   }, [searchQuery, sizeSelected]);
 
-  // 4. VALORES DERIVADOS (Variables simples, no estados)
+  const totalPaginas = Math.ceil(dataFinal.length / ITEMS_POR_PAGINA);
+  
+  const productosPaginados = useMemo(() => {
+    const inicio = (paginaActual - 1) * ITEMS_POR_PAGINA;
+    return dataFinal.slice(inicio, inicio + ITEMS_POR_PAGINA);
+  }, [dataFinal, paginaActual]);
+
   const noHayResultados = dataFinal.length === 0;
 
-  // 5. EFECTOS PARA COMUNICACIÓN EXTERNA (Padre, LocalStorage, Timers)
-  
-  // Informar al Header/Padre sobre el estado de la búsqueda
   useEffect(() => {
     if (searchQuery !== "") {
       setSearchClicked(true);
@@ -90,27 +90,45 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
     }
   }, [searchQuery, noHayResultados, setNoEncontro, setSearchClicked]);
 
-  // Manejar el reset manual (botón de limpiar filtros si existiera)
   useEffect(() => {
     if (params.get("reset") === "true") {
       setSizeSelected("Todas las tallas");
-      setParams({}, { replace: true });
+      const newParams = new URLSearchParams(params);
+      newParams.delete("page");
+      newParams.delete("reset");
+      setParams(newParams, { replace: true });
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [params, setParams]);
 
-  // Persistencia de Favoritos
   useEffect(() => {
     localStorage.setItem("Favoritos", JSON.stringify(idFavoritos));
   }, [idFavoritos]);
 
-  // Timer de la notificación
   useEffect(() => {
     if (notificacionFavoritos) {
       const timer = setTimeout(() => setNotificacionFavoritos(false), 4000);
       return () => clearTimeout(timer);
     }
   }, [notificacionFavoritos]);
+
+  const cambiarTalla = (talla: string) => {
+    setSizeSelected(talla);
+    const newParams = new URLSearchParams(params);
+    newParams.delete("page");
+    setParams(newParams);
+  }
+
+  const cambiarPagina = (nuevaPagina: number) => {
+    const newParams = new URLSearchParams(params);
+    if (nuevaPagina === 1) {
+      newParams.delete("page");
+    } else {
+      newParams.set("page", String(nuevaPagina));
+    }
+    setParams(newParams);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const funcionFavoritos = (id: number) => {
     const yaEsFavorito = idFavoritos.includes(id);
@@ -120,6 +138,31 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
     );
     setNotificacionFavoritos(true);
   };
+
+  // Componente reutilizable de Paginación Profesional Visible
+  const renderPaginacion = () => (
+    totalPaginas > 1 ? (
+      <div className={styles.home__paginacionContainer}>
+        <button 
+          className={styles.home__paginacionBoton}
+          onClick={() => cambiarPagina(paginaActual - 1)}
+          disabled={paginaActual === 1}
+        >
+          ◀ Anterior
+        </button>
+        <span className={styles.home__paginacionTexto}>
+          Página <strong>{paginaActual}</strong> de <strong>{totalPaginas}</strong>
+        </span>
+        <button 
+          className={styles.home__paginacionBoton}
+          onClick={() => cambiarPagina(paginaActual + 1)}
+          disabled={paginaActual === totalPaginas}
+        >
+          Siguiente ▶
+        </button>
+      </div>
+    ) : null
+  );
 
   return (
     <div className={`${styles.home__container} ${noHayResultados ? styles["home__container--sinTallas"] : ""}`}>
@@ -131,7 +174,7 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
         {sizes.map((talla) => (
           <BotonSimple 
             key={talla} 
-            changeSize={() => setSizeSelected(talla)} 
+            changeSize={() => cambiarTalla(talla)} 
             active={sizeSelected === talla}
           >
             {talla}
@@ -139,8 +182,11 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
         ))}
       </div>
 
+      {/* Paginación Superior Sincronizada */}
+      {renderPaginacion()}
+
       <div className={styles["home__cards-container"]}>
-        {dataFinal.map((producto) => (
+        {productosPaginados.map((producto) => (
           <TarjetaHome
             key={producto.id}
             imagen={producto.image[0]}
@@ -151,6 +197,9 @@ const Home = ({ datosDesdeHeader, setNoEncontro, setSearchClicked }: Props) => {
           />
         ))}
       </div>
+
+      {/* Paginación Inferior Sincronizada */}
+      {renderPaginacion()}
 
       {noHayResultados && (
         <div className={styles.home__noHayTallas}>

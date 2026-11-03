@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
-
-
 type Props = {
     imagen: string;
     nombreProducto: string;
@@ -13,14 +11,13 @@ type Props = {
     clase?: string
     id?: number
     handleFavoritos?: (id: number) => void
-    
 }
 
 function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos, id=-1}: Props) { 
     const [nombreUpercase, setNombreUpercase] = useState("")  
     const [click, setClick] = useState(false)
 
-    const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
+    const [idFavoritos] = useState<number[]>(() => {
       const datosLS = localStorage.getItem("Favoritos");
       if (!datosLS) return []; 
       try {
@@ -31,53 +28,36 @@ function TarjetaHome({imagen, nombreProducto, slug, clase="", handleFavoritos, i
     });
     
     useEffect(() => {
-      console.log("si se ejecuta el use effect")
-      console.log(id)
-      console.log(idFavoritos.includes(id))
       setClick(idFavoritos.includes(id))
-      
-    }, [])
-    
-    
-      
-    
-    
+    }, [id, idFavoritos])
 
     useEffect(() => {
       setNombreUpercase(nombreProducto.toUpperCase())
-
     }, [nombreProducto])
 
-    const clickIcon = () =>{
-    
+    const clickIcon = () => {
       setClick(!click)
     }
-    
 
-  
-   
-    
   return (
-        <div className={styles[clase?clase:"tarjetaHome__container"]}>
+        <div className={styles[clase ? clase : "tarjetaHome__container"]}>
           <div className={styles["tarjetaHome__img-container"]}>
             <Link to={`/producto/${slug}`} className={styles["tarjetaHome__link-img"]}>
               <img src={imagen} className={styles.tarjetaHome__img} alt="Vista previa imagen de Vestido" loading="lazy" />
             </Link>
               <button className={styles.tarjetaHome__like}>
-                {click?
+                {click ?
                  <FaHeart className={styles.tarjetaHome__iconOn} onClick={()=>{handleFavoritos?.(id); clickIcon()}}/>
-                :<FaRegHeart className={styles.tarjetaHome__icon}onClick={()=>{handleFavoritos?.(id); clickIcon()}} />
+                : <FaRegHeart className={styles.tarjetaHome__icon} onClick={()=>{handleFavoritos?.(id); clickIcon()}} />
               } 
-                
                </button>
           </div>
           <div className={styles["tarjetaHome__p-container"]}>
             <Link to={`/producto/${slug}`} className={styles.tarjetaHome__link}>
-                <p className={styles.tarjetaHome__name}>{nombreUpercase} </p>
+                <p className={styles.tarjetaHome__name}>{nombreUpercase}</p>
             </Link>
           </div>
         </div>
-    
   )
 }
 

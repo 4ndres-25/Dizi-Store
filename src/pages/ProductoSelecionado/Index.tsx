@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import type {Vestido} from '../../types/Vestidos'
 import vestidos from '../../data/vestidos.json'
@@ -11,20 +11,13 @@ import Footer from '../../components/Footer/Index'
 import { GiDress } from "react-icons/gi";
 import { IoColorPalette } from "react-icons/io5";
 import { GiRolledCloth } from "react-icons/gi";
-import { MdOutlineWbSunny } from "react-icons/md";
 import { GiYarn } from "react-icons/gi";
-import { FaPlus } from "react-icons/fa6";
 import { GiForearm } from "react-icons/gi";
-import { FaMinus } from "react-icons/fa6"
 import { MdOutlineCheckroom } from "react-icons/md";
 import NotificacionFavoritos from '../../components/NotificacionFavoritos/Index'
 
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import type { ReactZoomPanPinchRef } from "react-zoom-pan-pinch";
-import { LiaStickyNoteSolid } from 'react-icons/lia'
-
-
-
 
 type Props = {}
 
@@ -35,138 +28,84 @@ function ProductoSeleccionado({}: Props) {
     const [modalState, setmodalState] = useState(false)
     const zoomRef = useRef<ReactZoomPanPinchRef | null>(null);
     const [animationImg, setanimationImg] = useState<number>()
-    const [stateInformation, setstateInformation] = useState(false)
     const [notificacionFavoritos, setNotificacionFavoritos] = useState(false)
     const [coincide, setCoincide] = useState<boolean>()
     const [tallas, setTallas] = useState("")
 
     const [idFavoritos, setidFavoritos] = useState<number[]>(() => {
-    const datosLS = localStorage.getItem("Favoritos");
-    
-    if (!datosLS) return []; 
-    try {
-      return JSON.parse(datosLS); 
-    } catch {
-      return []; 
-    }
-  });
-
-  useEffect(() => {
-    localStorage.setItem("Favoritos", JSON.stringify(idFavoritos?idFavoritos:[]))   
-  }, [idFavoritos])
-
-  useEffect(() => {
-    if(notificacionFavoritos){
-      const timer = setTimeout(() => {
-        setNotificacionFavoritos(false)
-      }, 4000);
-    return () => clearTimeout(timer);
-    }
-  
-    
-  }, [notificacionFavoritos])
-    
-    const data: Vestido[] = vestidos
-    /* console.log(data[1].image) */
+      const datosLS = localStorage.getItem("Favoritos");
+      if (!datosLS) return []; 
+      try {
+        return JSON.parse(datosLS); 
+      } catch {
+        return []; 
+      }
+    });
 
     useEffect(() => {
-      
-        data.map((element)=>{
-            
-            if(element.slug===slug){
-                setDatosProducto(element)
-            }
-        })
-        
-      
-    }, [slug])
+      localStorage.setItem("Favoritos", JSON.stringify(idFavoritos ? idFavoritos : []))   
+    }, [idFavoritos])
 
     useEffect(() => {
-      
+      if(notificacionFavoritos){
+        const timer = setTimeout(() => {
+          setNotificacionFavoritos(false)
+        }, 4000);
+        return () => clearTimeout(timer);
+      }
+    }, [notificacionFavoritos])
+    
+    const data: Vestido[] = vestidos;
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        const encontrado = data.find(element => element.slug === slug);
+        setDatosProducto(encontrado || null);
+    }, [slug, data])
+
+    useEffect(() => {
         setIndexImg(0)
-        setTallas(datosProducto?.tallas.join("-")?datosProducto?.tallas.join(" - "):"")
-      
+        setTallas(datosProducto?.tallas ? datosProducto.tallas.join(" - ") : "")
     }, [datosProducto])
     
-    console.log(datosProducto?.image)
-
     const handleWhatsapp = () => {
         const mensaje = encodeURIComponent(`Hola!😊 Quiero el producto:\n\n${datosProducto?.name}\n\n Producto: https://dizistore.pages.dev/producto/${datosProducto?.slug}`);
         window.open(`https://wa.me/59172234794?text=${mensaje}`, "_blank");
     }
-    const showImage = (index : number , key : number) =>{
+
+    const showImage = (index : number, key : number) => {
         setIndexImg(index)
         setanimationImg(key)
-
     }
 
-    const openModalImg =()=>{
+    const openModalImg = () => {
         setmodalState(!modalState)
         zoomRef.current?.resetTransform(0)
     }
 
-    const funcionFavoritos = (id : number) =>{
-    setCoincide(idFavoritos.includes(id)?false:true)
-    if(id){
-      setidFavoritos(prev => prev.includes(id)? prev.filter(favid => favid !==id): [...prev, id])
-    }
-    setNotificacionFavoritos(true)
-  }
-  const mostrarMasInformacion = () =>{
-    setstateInformation(!stateInformation)
-  }
-
-  let nuevo:string[] = []
-  let objeto1 = [{id: 0, r: 0}]
-  let arrayNum :number[] = []
-  let arraySinRepetidos : number[]= []
-  let f: any[]= []
-  let final: any[] = []
-    const [dataFiltrado, setDataFiltrado] = useState<Vestido[]>([])
-
-
-
-  useEffect(() => {
-    data.map((value,key)=>{
-      nuevo = datosProducto?.tags?.filter(e => value.tags.includes(e)) ?? []
-
-      
-      objeto1.push( {
-        id: value.id,
-        r: nuevo.length, 
-      })
-      if(nuevo.length > 0){
-        arrayNum.push(nuevo.length)
-
+    const funcionFavoritos = (id : number) => {
+      setCoincide(idFavoritos.includes(id) ? false : true)
+      if(id){
+        setidFavoritos(prev => prev.includes(id) ? prev.filter(favid => favid !== id) : [...prev, id])
       }
-    
-    })
-    arrayNum.sort((a,b)=>b-a)
-    arraySinRepetidos = [...new Set(arrayNum)]
+      setNotificacionFavoritos(true)
+    }
 
-    
-      
-    arraySinRepetidos.map(value => {
-      f = objeto1.filter(e => e.r === value)
-      f.map((df)=>{
-        final.push(df)
-      })
-        
-      })
+    const dataFiltrado = useMemo(() => {
+      if (!datosProducto) return [];
 
-      final.map((value)=>{
-        const encontrado = data.find(s => s.id === value.id )
-        if(encontrado){
-          setDataFiltrado(prev => [...prev,encontrado])
-        }
-      })
-  
-    
-  }, [datosProducto])
-  
+      return data
+        .filter(item => item.id !== datosProducto.id)
+        .map(item => {
+          const matches = item.tags.filter(tag => datosProducto.tags.includes(tag)).length;
+          return { item, matches };
+        })
+        .filter(entry => entry.matches > 0)
+        .sort((a, b) => b.matches - a.matches)
+        .map(entry => entry.item);
+    }, [datosProducto, data]);
   
   return (
-
     <div className={styles.productoSeleccionado}>
         <NotificacionFavoritos estado={notificacionFavoritos} coincide={coincide}></NotificacionFavoritos>
         <h1 className={styles.productoSeleccionado__h1NameProducto}>{datosProducto?.name}</h1>
@@ -193,7 +132,6 @@ function ProductoSeleccionado({}: Props) {
                             width: "100%",
                             height: "100%",
                         }}>
-
                             <img className={styles.productoSeleccionado__ImagenPrincipal} src={datosProducto?.image[indexImg]} alt="Imagen del Producto Seleccionado" loading='lazy' />
                         </TransformComponent>
                     </TransformWrapper>
@@ -203,105 +141,67 @@ function ProductoSeleccionado({}: Props) {
                 </div>
                 <div className={styles.productoSeleccionado__otrasImagenes}>
                     {datosProducto?.image.map((element, key)=>(
-                        
                         <div key={key} className={styles.productoSeleccionado__ConImagenCarrusel}>
                             <img className={`${styles["productoSeleccionado__ImagenCarrusel"]} ${animationImg===key? styles["productoSeleccionado__ImagenCarrusel--click"]: ""} ` } src={element} alt="" onClick={()=>showImage(datosProducto.image.indexOf(element), key)} loading='lazy'/>
                         </div>
-                    )
-                    )}
-                
+                    ))}
                 </div>
             </div>
 
-
-
-
-        <div className={styles.productoSeleccionado__MasInfo}>
-            <div className={styles["productoSeleccionado__wp-container"]}>
-                <label >¿Te interesa este producto? Escríbenos</label>
-            <button className={styles.productoSeleccionado__whatsapp} onClick={handleWhatsapp}>Consultar sobre este producto <ImWhatsapp className={styles["productoSeleccionado__wp-icon"]}/></button>
-
-            </div>
+            <div className={styles.productoSeleccionado__MasInfo}>
+                <div className={styles["productoSeleccionado__wp-container"]}>
+                    <label >¿Te interesa este producto? Escríbenos</label>
+                    <button className={styles.productoSeleccionado__whatsapp} onClick={handleWhatsapp}>Consultar sobre este producto <ImWhatsapp className={styles["productoSeleccionado__wp-icon"]}/></button>
+                </div>
                 <h3 className={styles.productoSeleccionado__h3Descripcion}>Descripción</h3>
-            <div className={styles.productoSeleccionado__descripcion}>
-                {datosProducto?.descripcion}
-            </div>
-            <div className={styles.productoSeleccionado__masInformacion}>
-                <div className={styles.masInformacion__desplegable} onClick={mostrarMasInformacion}>
-                    <h3 className={styles.masInformacion__h3}>Ver más información del producto</h3>
-                    {stateInformation?<FaMinus className={styles.masInformacion__iconPlus}/>:<FaPlus className={styles.masInformacion__iconPlus}/>}
+                <div className={styles.productoSeleccionado__descripcion}>
+                    {datosProducto?.descripcion}
                 </div>
-                <div className={`${stateInformation?styles.masInformacion__container:styles["masInformacion__container--off"]}`}>
-                    <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                        <div className={styles.masInformacion__containerIcon}><GiDress className={styles.masInformacion__icon}/></div> 
-                        <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.largo_del_producto}</p>
+                <div className={styles.productoSeleccionado__masInformacion}>
+                    <h3 className={styles.masInformacion__h3}>Información del producto</h3>
+                    <div className={styles.masInformacion__container}>
+                        <div className={styles.masInformacion__informacion}>
+                            <div className={styles.masInformacion__containerIcon}><GiDress className={styles.masInformacion__icon}/></div> 
+                            <p className={styles.masInformacion__p}><strong>Estilo:</strong>  {datosProducto?.largo_del_producto}</p>
+                        </div>
+                        <div className={styles.masInformacion__informacion}>
+                            <div className={styles.masInformacion__containerIcon}><IoColorPalette className={styles.masInformacion__icon}/></div> 
+                            <p className={styles.masInformacion__p}><strong>Tono:</strong>  {datosProducto?.tono}</p>
+                        </div>
+                        <div className={styles.masInformacion__informacion}>
+                            <div className={styles.masInformacion__containerIcon}><GiRolledCloth className={styles.masInformacion__icon}/></div> 
+                            <p className={styles.masInformacion__p}><strong>Tipo de tela:</strong>  {datosProducto?.tipo_tela}</p>
+                        </div>
+                        <div className={styles.masInformacion__informacion}>
+                            <div className={styles.masInformacion__containerIcon}><MdOutlineCheckroom className={styles.masInformacion__icon}/></div> 
+                            <p className={styles.masInformacion__p}><strong>Corte:</strong>  {datosProducto?.corte}</p>
+                        </div>
+                        <div className={styles.masInformacion__informacion}>
+                            <div className={styles.masInformacion__containerIcon}><GiYarn className={styles.masInformacion__icon}/></div> 
+                            <p className={styles.masInformacion__p}><strong>Materiales:</strong>  {datosProducto?.materiales?.join(", ")}</p>
+                        </div>
+                        <div className={styles.masInformacion__informacion}>
+                            <div className={styles.masInformacion__containerIcon}><GiForearm className={styles.masInformacion__icon}/></div> 
+                            <p className={styles.masInformacion__p}><strong>Mangas:</strong>  {datosProducto?.mangas}</p>
+                        </div>
                     </div>
-                    <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                        <div className={styles.masInformacion__containerIcon}><IoColorPalette className={styles.masInformacion__icon}/></div> 
-                        <p className={styles.masInformacion__p}><strong>Tono:</strong>  {datosProducto?.tono}</p>
-                    </div>
-                    <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                        <div className={styles.masInformacion__containerIcon}><GiRolledCloth className={styles.masInformacion__icon}/></div> 
-                        <p className={styles.masInformacion__p}><strong>Tipo de tela:</strong>  {datosProducto?.tipo_tela}</p>
-                    </div>
-                    <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                        <div className={styles.masInformacion__containerIcon}><MdOutlineCheckroom className={styles.masInformacion__icon}/></div> 
-                        <p className={styles.masInformacion__p}><strong>Corte:</strong>  {datosProducto?.corte}</p>
-                    </div>
-                    <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                        <div className={styles.masInformacion__containerIcon}><GiYarn className={styles.masInformacion__icon}/></div> 
-                        <p className={styles.masInformacion__p}><strong>Materiales:</strong>  {datosProducto?.materiales?.join(", ")}</p>
-                    </div>
-                    <div className={`${stateInformation?styles.masInformacion__informacion:styles["masInformacion__informacion--off"]}`}>
-                        <div className={styles.masInformacion__containerIcon}><GiForearm className={styles.masInformacion__icon}/></div> 
-                        <p className={styles.masInformacion__p}><strong>Mangas:</strong>  {datosProducto?.mangas}</p>
-                    </div>
-                
-                    
                 </div>
             </div>
-
         </div>
 
-
-        </div>
         <h3 className={styles.productoSeleccionado__h3ProductoRelacionado}>PRODUCTOS RELACIONADOS</h3>
         <div className={styles.carrusel__container}>
-            {
-            dataFiltrado.map((element, key)=>(
-                
-                <div>
-                { element.tags.some(item=> datosProducto?.tags.includes(item))?(
-
-                
-                ((element.id!==datosProducto?.id)?
-                        (
-                    <><div className={styles.carrusel__containerimg}>
-                        <TarjetaHome 
+            {dataFiltrado.map((element, key) => (
+                <div key={element.id || key} className={styles.carrusel__containerimg}>
+                    <TarjetaHome 
                         imagen={element.image[0]} 
                         nombreProducto={element.name} 
                         slug={element.slug}
-                        key={key}
                         clase='tarjetaHome__container--carrusel'
                         handleFavoritos={()=>funcionFavoritos(element.id)}
-                        id={element.id}></TarjetaHome>
-                        </div>
-                         
-                        
-                
-                        </>
-                        
-                    )
-                    :(null))
-                
-
-
-
-
-               )
-
-                :(null)
-                }</div>
+                        id={element.id}
+                    />
+                </div>
             ))}
         </div>
         <Footer></Footer>
@@ -309,4 +209,4 @@ function ProductoSeleccionado({}: Props) {
   )
 }
 
-export default ProductoSeleccionado 
+export default ProductoSeleccionado
